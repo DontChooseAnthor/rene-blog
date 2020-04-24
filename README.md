@@ -1,22 +1,7 @@
 # rene-blog
-
-> My funkadelic Nuxt.js project
-
-## Build Setup
-
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## 开发日志
+- 基于Nuxt.js开发的SSR博客线上项目(前后端分离开发)
+- 数据库选择mongodb
+- 后端框架选择Koa2
+- UI部分 Antd-vue和Nuxt-fontawesome 混合使用
+- 项目部署于腾讯云服务器(www.reneforevercn.club)
