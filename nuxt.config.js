@@ -31,7 +31,7 @@ module.exports = {
     // font-awesome
     {src:'~/plugins/font-awesome.js',ssr:true},
     // antd-vue
-    {src:'~/plugins/antd.js',ssr:true}
+    {src:'~/plugins/antd-ui.js',ssr:true}
   ],
   /*
   ** Nuxt.js dev-modules
@@ -74,6 +74,7 @@ module.exports = {
     // webpack-bundle-analyzer
     //nuxt build --analyzer
     analyzer: true,
+    // transpile:[/ant-design-vue/],
     extend (config, ctx) {
     }
   }

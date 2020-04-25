@@ -1,13 +1,14 @@
 <template>
 <div>
-  <!-- 提示 -->
-    <div class="tip">
+<div class="homebody">
+    <!-- 提示 -->
+  <div class="tip">
       小尺寸屏幕切换手机端体验会更好，手机端仍在开发中请耐心等待
-    </div>
+  </div>
   <div class="home">
     <!-- header -->
-    <div class="headercontent" :style="headerContent">
-      <div class="headername">さくら荘の宝</div>
+    <div class="headercontent">
+      <div class="headername">天井湖失意人</div>
       <nav>
         <ul>
           <nuxt-link to="/home">
@@ -65,65 +66,9 @@
         </nuxt-link>
       </div>
     </div>
-    <div class="show-headercontent" :style="showHeaderContent">
-      <div class="headername">さくら荘の宝</div>
-      <nav class="shownav">
-        <ul>
-          <nuxt-link to="/home">
-            <li>
-              <div class="navcontent">
-                <font-awesome-icon class="nav-icon" icon="home" />
-                <p>首页</p>
-              </div>
-            </li>
-          </nuxt-link>
-          <nuxt-link to="/chat">
-            <li>
-              <div class="navcontent">
-                <font-awesome-icon class="nav-icon" :icon="['fas','comments']" />
-                <p>杂谈</p>
-              </div>
-            </li>
-          </nuxt-link>
-          <nuxt-link to="/resource">
-            <li>
-              <div class="navcontent">
-                <font-awesome-icon class="nav-icon" :icon="['fas','box-open']" />
-                <p>资源</p>
-              </div>
-            </li>
-          </nuxt-link>
-          <nuxt-link to="/message">
-            <li>
-              <div class="navcontent">
-                <font-awesome-icon class="nav-icon" :icon="['fas', 'edit']" />
-                <p>留言板</p>
-              </div>
-            </li>
-          </nuxt-link>
-          <nuxt-link to="/about">
-            <li>
-              <div class="navcontent">
-                <font-awesome-icon class="nav-icon" :icon="['fas','tree']" />
-                <p>关于</p>
-              </div>
-            </li>
-          </nuxt-link>
-        </ul>
-      </nav>
-      <div class="show-headericon">
-        <nuxt-link to="/search">
-          <div class="search">
-            <a-icon type="search" />
-          </div>
-        </nuxt-link>
-        <nuxt-link to="/login">
-          <div class="user">
-            <a-icon type="user" />
-          </div>
-        </nuxt-link>
-      </div>
-    </div>
+
+    <!-- Nav component -->
+    <Nav v-if="navShow" />
 
     <!-- scrollTop-img -->
     <div class="scrollTop-img" ref="cat">
@@ -259,7 +204,7 @@
       <div class="remind">
         <a-icon type="sound" />
         <!-- color="#7f8c8d" -->
-        <p>收藏网站，随时围观站长小花招~</p>
+        <p>收藏网站，随时围观站长奇思妙想~</p>
       </div>
       <div class="course">
         <font-awesome-icon class="course-icon" :icon="['fas','crow']" />
@@ -307,21 +252,20 @@
     </div>
   </div>
 </div>
+<Footer />
+</div>
   
 </template>
 
 <script>
+import Nav from '../components/nav'
+import Footer from '../components/footer'
 export default {
   name: "Home",
   data() {
     return {
-      headerContent: {
-        display: "inline"
-      },
-      showHeaderContent: {
-        display: "none"
-      },
-      bg: ""
+      bg: "",
+      navShow: false
     };
   },
   methods: {
@@ -339,17 +283,13 @@ export default {
         document.body.scrollTop;
       let cat;
       if (scrollTop < 690) {
-        this.headerContent.display = "inline";
-        this.showHeaderContent.display = "none";
         cat = "900px";
-        // console.log(this.$refs.cat.style)
+        this.navShow = false
       } else {
-        this.headerContent.display = "none";
-        this.showHeaderContent.display = "inline";
-        // console.log(this.$refs.cat.style)
         cat = "100px";
+        this.navShow = true
       }
-      return (this.$refs.cat.style.bottom = cat);
+      return this.$refs.cat.style.bottom = cat;
     },
     //返回顶部鼠标事件
     backTop() {
@@ -359,7 +299,10 @@ export default {
     }
   },
   computed: {},
-  components: {},
+  components: {
+    Nav,
+    Footer
+  },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
     // 进入时改变bcimg
@@ -483,111 +426,6 @@ export default {
   }
   .headercontent:hover {
     background: #ffffff;
-  }
-
-  // showHeader
-  .show-headercontent {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 0;
-    z-index: 1000 !important;
-    overflow: hidden;
-    background-color: #ffffff;
-    opacity: 0;
-    transition: all 1.5s linear;
-    .headername {
-      position: fixed;
-      color: #bdc3c7;
-      font-family: Ubuntu, sans-serif;
-      font-size: 20px;
-      top: 15px;
-      left: 20px;
-      transition: color 1s;
-      z-index: 99;
-    }
-    .headername:hover {
-      color: #e67e22;
-    }
-    .shownav {
-      float: right;
-      position: absolute;
-      right: 120px;
-      height: 60px;
-      ul {
-        display: inline-flex;
-        list-style: none;
-        li {
-          width: 100px;
-          line-height: 60px;
-          height: 60px;
-          text-align: center;
-          display: inline-flex;
-          justify-content: center;
-          color: #bdc3c7;
-          .navcontent {
-            position: absolute;
-            height: 60px;
-            border-bottom: solid 5px white;
-            border-bottom-width: 0;
-            transition: all 0.5s;
-            p {
-              display: inline-block;
-              font-size: 15px;
-              height: 60px;
-              font-family: Geneva, Verdana, sans-serif;
-            }
-            .nav-icon {
-              display: inline-block;
-              width: 18px;
-              height: 18px;
-              margin-right: 3px;
-            }
-          }
-        }
-        li:hover > .navcontent {
-          border-bottom-color: #e67e22;
-          color: #e67e22;
-          border-bottom-width: 5.5px;
-        }
-      }
-    }
-    .show-headericon {
-      position: fixed;
-      float: left;
-      right: 10px;
-      height: 60px;
-      vertical-align: middle;
-      z-index: 199;
-      display: inline-flex;
-      .search {
-        color: #bdc3c7;
-        margin-top: 14px;
-        margin-right: 13px;
-        transition: all 0.5s;
-        font-size: 30px;
-      }
-      .user {
-        color: #bdc3c7;
-        font-size: 30px;
-        margin-top: 14px;
-        transition: all 0.5s;
-      }
-      .search:hover {
-        color: #e67e22;
-        transform: translateY(-5px);
-        cursor: pointer;
-      }
-      .user:hover {
-        color: #e67e22;
-        transform: translateY(-5px);
-        cursor: pointer;
-      }
-    }
-  }
-  .show-headercontent {
-    opacity: 0.96;
-    height: 60px;
   }
 
   // 笨办法修改background
@@ -714,10 +552,20 @@ export default {
 
   // main info
   .focusinfo {
-    width: 800px;
+    width: 80%;
     height: 250px;
     text-align: center;
-    margin: -500px auto;
+    margin-top: -70vh;
+    margin-left: 10%;
+    .header-info{
+      width: 46%;
+      p{
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
   }
   .center-text {
     margin: auto;
@@ -935,8 +783,8 @@ export default {
     height: 30px;
     font-size: 30px;
     color: #fff;
-    margin: auto;
-    animation: icon-change 0.7s linear 0s infinite alternate;
+    margin:0 auto;
+    animation: icon-change .5s linear infinite alternate;
     svg {
       width: inherit;
       height: inherit;
@@ -947,10 +795,10 @@ export default {
   }
   @keyframes icon-change {
     from {
-      margin-top: 100px;
+      margin-top: 75px;
     }
     to {
-      margin-top: 108px;
+      margin-top: 87px;
     }
   }
 
@@ -962,7 +810,7 @@ export default {
     width: 100%;
     height: 12vh;
     min-height: 100px;
-    max-height: 150px;
+    max-height: 140px;
   }
   /* Animation */
 
