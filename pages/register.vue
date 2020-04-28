@@ -15,6 +15,19 @@
       </div>
       <div class="container">
         <a-form :form="form" @submit="handleSubmit">
+          <a-form-item label="用户名">
+            <a-input
+              v-decorator="[
+                'username',
+                {
+                  rules: [
+                    {required: true,message:'请输入用户名'},
+                    {}
+                  ]
+                }
+              ]"
+            ></a-input>
+          </a-form-item>
           <a-form-item label="邮箱地址">
             <a-input
               v-decorator="[
@@ -24,6 +37,7 @@
                     {
                       type: 'email',
                       message: '请输入合法的邮箱地址',
+                      trigger: 'blur'
                     },
                     {
                       required: true,
@@ -83,40 +97,26 @@
         ]"
             />
           </a-form-item>
-          <a-form-item label="电话号码">
-            <a-input
-              v-decorator="[
-          'phone',
-          {
-            rules: [{ required: true, message: '请输入您的电话号码' }],
-          },
-        ]"
-              style="width: 100%"
-            >
-              <a-select
-                slot="addonBefore"
-                v-decorator="['prefix', { initialValue: '86' }]"
-                style="width: 70px"
-              >
-                <a-select-option value="86">+86</a-select-option>
-                <a-select-option value="87">+87</a-select-option>
-                <a-select-option value="852">+852</a-select-option>
-                <a-select-option value="853">+853</a-select-option>
-                <a-select-option value="886">+886</a-select-option>
-              </a-select>
-            </a-input>
-          </a-form-item>
 
           <a-form-item>
             <a-checkbox v-decorator="['agreement', { valuePropName: 'checked' }]">
               已经阅读了
-              <nuxt-link to="/">
-                玩转博客的自我修养(用户协议)
-              </nuxt-link>
+              <nuxt-link to="/">玩转博客的自我修养(用户协议)</nuxt-link>
             </a-checkbox>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" html-type="submit">Register</a-button>
+            <a-button type="primary" html-type="submit">立即注册</a-button>
+            <a-modal
+            title="Title"
+            :visible="visible1"
+            :confirmLoading="confirmLoading1"
+            @ok="handleOk1"
+            ><p>{{ModalText1}}</p></a-modal>
+            <a-modal
+            title="Title"
+            :visible='visible2'
+            @ok="handleOk2"
+            ><p>{{ModalText2}}</p></a-modal>
           </a-form-item>
         </a-form>
       </div>
@@ -131,7 +131,7 @@ import { Icon } from "ant-design-vue";
 const IconFont = Icon.createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_1745031_wqtjly17xot.js"
 });
-
+import CryptoJS from 'crypto-js'
 export default {
   beforeCreate() {
     this.form = this.$form.createForm(this, { name: "register" });
@@ -139,7 +139,12 @@ export default {
   data() {
     return {
       confirmDirty: false,
-      autoCompleteResult: []
+      autoCompleteResult: [],
+      visible1: false,
+      confirmLoading1: false,
+      visible2: false,
+      ModalText1:'注册成功，确认后跳转登录页面',
+      ModalText2:''
     };
   },
   components: {
@@ -149,11 +154,42 @@ export default {
   methods: {
     handleSubmit(e) {
       e.preventDefault();
-      this.form.validateFieldsAndScroll((err, values) => {
+      let _this = this
+      this.form.validateFieldsAndScroll(async(err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          // console.log("Received values of form: ", values);
+          // console.log(values);
+          const res = await _this.$axios.post('/users/signup',{
+           username: window.encodeURIComponent(values.username),
+           password: CryptoJS.MD5(values.password).toString(),
+           email: values.email,
+           nickname: values.nickname
+         }).then(({status,data})=>{
+           if(status===200){
+             if(data&&data.code===0){
+               this.visible1 = true
+             }else if(data&&data.code===-1){
+               this.visible2 = true
+               this.ModalText2 = data.msg
+             }
+           }
+         })
+          
         }
+        
       });
+    },
+    handleOk1(e){
+      this.ModalText1 = "页面将在两秒后跳转"
+      this.confirmLoading1 = true
+      setTimeout(()=>{
+        this.visible1 = false;
+        this.confirmLoading1 = false
+        this.$router.push('/login')
+      },2000)
+    },
+    handleOk2(e){
+      this.visible2 = false;
     },
     handleConfirmBlur(e) {
       const value = e.target.value;
@@ -179,7 +215,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-a{
+a {
   text-decoration: none;
 }
 .register {

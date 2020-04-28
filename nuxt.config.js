@@ -31,7 +31,8 @@ module.exports = {
     // font-awesome
     {src:'~/plugins/font-awesome.js',ssr:true},
     // antd-vue
-    {src:'~/plugins/antd-ui.js',ssr:true}
+    {src:'~/plugins/antd-ui.js',ssr:true},
+    {src:'~/plugins/vue-lazyload.js',ssr:false}
   ],
   /*
   ** Nuxt.js dev-modules
@@ -43,7 +44,8 @@ module.exports = {
   */
   modules: [
     // 引入新增nuxt-fontawesome套件
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    '@nuxtjs/axios'
   ],
     /*
     ** FontAwesome module configuration 配置FontAwesome

@@ -70,13 +70,7 @@
     <!-- Nav component -->
     <Nav v-if="navShow" />
 
-    <!-- scrollTop-img -->
-    <div class="scrollTop-img" ref="cat">
-      <img src="../assets/home/home-scroll/scroll.png" />
-      <div class="focus-bar" @click="backTop"></div>
-    </div>
-
-    <div :class="bg" id="headerBg">
+    <div :class="bg" v-lazy id="headerBg">
       <!-- title -->
       <figure id="centerbg" class="centerbg">
         <div class="focusinfo">
@@ -166,6 +160,12 @@
               </li>
             </div>
           </div>
+
+          <!-- backtop -->
+          <a-back-top>
+              <img class="back-top-img" src="../assets/home/home-scroll/scroll.png" alt="">      
+          </a-back-top>
+
           <!-- 下箭头 -->
           <div class="icon-down" @click="iconDownScroll">
             <a-icon type="caret-down" />
@@ -275,28 +275,21 @@ export default {
         .getElementById("news")
         .scrollIntoView({ block: "start", behavior: "smooth" });
     },
-    // 监听页面滚动触发常驻nav和返回顶部动画
+    // 监听页面滚动触发常驻nav
     handleScroll() {
       let scrollTop =
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop;
-      let cat;
+      
       if (scrollTop < 690) {
-        cat = "900px";
         this.navShow = false
       } else {
-        cat = "100px";
         this.navShow = true
       }
-      return this.$refs.cat.style.bottom = cat;
     },
     //返回顶部鼠标事件
-    backTop() {
-      document
-        .getElementById("headerBg")
-        .scrollIntoView({ block: "start", behavior: "smooth" });
-    }
+    
   },
   computed: {},
   components: {
@@ -304,15 +297,15 @@ export default {
     Footer
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll',this.handleScroll)
     // 进入时改变bcimg
     let num = Math.floor(Math.random() * 7 + 1);
     // this.$refs.backGroundImage.style.backGround = url(`../assets/theme/${num}.jpg`)
     this.bg = `bg${num}`;
   },
   destroyed() {
-    document.removeEventListener("scroll", this.handleScroll);
-  }
+    window.removeEventListener('scroll',this.handleScroll)
+  },
 };
 </script>
 
@@ -555,22 +548,20 @@ export default {
     width: 80%;
     height: 250px;
     text-align: center;
-    margin-top: -70vh;
+    margin-top: -65vh;
     margin-left: 10%;
     .header-info{
-      width: 46%;
+      width: 500px;
       p{
         width: 100%;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
       }
     }
   }
   .center-text {
     margin: auto;
     font-family: Ubuntu, sans-serif;
-    font-size: 80px;
+    font-size: 105px;
+    letter-spacing: 5px;
     text-transform: uppercase;
   }
 
@@ -784,7 +775,7 @@ export default {
     font-size: 30px;
     color: #fff;
     margin:0 auto;
-    animation: icon-change .5s linear infinite alternate;
+    animation: icon-change .8s linear infinite alternate;
     svg {
       width: inherit;
       height: inherit;
@@ -795,10 +786,10 @@ export default {
   }
   @keyframes icon-change {
     from {
-      margin-top: 75px;
+      margin-top: 90px;
     }
     to {
-      margin-top: 87px;
+      margin-top: 120px;
     }
   }
 
@@ -843,21 +834,21 @@ export default {
   }
 
   //scrollTop-img
-  .scrollTop-img {
+  .back-top-img {
     position: fixed;
     z-index: 1;
-    width: 40px;
-    right: 65px;
-    bottom: 900px;
-    transition: bottom 1s ease-in-out;
-    .focus-bar {
-      position: absolute;
-      display: block;
-      z-index: 10;
-      width: 70px;
-      height: 100px;
-      margin-top: -110px;
-      cursor: pointer;
+    width: 75px;
+    right: 95px;
+    bottom: 200px;
+    animation: showIt 1.5s ease;
+    animation-direction: alternate;
+  }
+  @keyframes showIt {
+    from{
+      bottom: 1000px;
+    }
+    to{
+      bottom: 200px;
     }
   }
 

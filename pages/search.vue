@@ -6,7 +6,7 @@
       </div>
       <div class="container">
         <icon-font type="icon-search1"></icon-font>
-        <input class="search-input" type="text" placeholder="想要发现什么宝贝" @focus="isFocus" @blur="isBlur"  v-model="search" />
+        <input class="search-input" type="text" placeholder="想要发现什么宝贝" @focus="isFocus" @blur="isBlur"  v-model="search" @keydown.enter="submit" />
         <dl class="hot-place" v-show="isHotPlace">
           <dt>热门搜索:</dt>
           <dd>1</dd>
@@ -64,6 +64,9 @@ export default {
       setTimeout(function(){
         _this.isFocusValue = false
       },500)
+    },
+    submit(){
+      console.log(this.search)
     }
   }
 };

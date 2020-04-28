@@ -22,21 +22,17 @@
         <a-form-item>
           <a-input
             v-decorator="[
-          'email',
+          'username',
           {
             rules: [
               {
-                type: 'email',
-                message: '请输入有效的登录邮箱',
-              },
-              {
                 required: true,
-                message: '请输入邮箱',
+                message: '请输入用户名',
               },
             ],
           },
         ]"
-            placeholder="Email"
+            placeholder="Username"
           >
             <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
           </a-input>
@@ -72,6 +68,7 @@
 </template>
 
 <script>
+import CryptoJS from 'crypto-js'
 import Footer from "../components/footer";
 import { Icon } from "ant-design-vue";
 const IconFont = Icon.createFromIconfontCN({
@@ -91,9 +88,17 @@ export default {
   methods: {
     handleSubmit(e) {
       e.preventDefault();
-      this.form.validateFields((err, values) => {
+      let _this = this
+      this.form.validateFields(async(err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          // console.log("Received values of form: ", values);
+         const res = await _this.$axios.post('/users/signin',{
+           username:window.encodeURIComponent(values.username),
+           password:CryptoJS.MD5(values.password).toString()
+         })
+        console.log(res.data)
+          
+          
         }
       });
     }
