@@ -7,4 +7,5 @@
 - 项目部署于腾讯云服务器(www.reneforevercn.club)
 - 计划使用redis作为内存数据库，优化负载性能
 - 通过markdown形式上传文章内容，通过前端展示到页面上
-- 选择UEditor富文本编辑器
+- 使用koa-cors处理跨域问题
+- 选择vue-quill-editor富文本编辑器

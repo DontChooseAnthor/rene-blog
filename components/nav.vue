@@ -78,9 +78,10 @@ export default {
   width: 100%;
   height: 70px;
   z-index: 1000;
-  opacity: .96;
+  opacity: .9;
   overflow: hidden;
   background-color: #ffffff;
+  transition: opacity .5s linear;
   .headername {
     position: fixed;
     color: #bdc3c7;
@@ -155,7 +156,7 @@ export default {
         right: 160px;
       }
       100% {
-        opacity: .95;
+        opacity: .9;
         right: 220px;
       }
     }
@@ -192,5 +193,8 @@ export default {
       cursor: pointer;
     }
   }
+}
+.show-headercontent:hover{
+  opacity: 1;
 }
 </style>

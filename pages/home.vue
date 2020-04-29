@@ -162,9 +162,7 @@
           </div>
 
           <!-- backtop -->
-          <a-back-top>
-              <img class="back-top-img" src="../assets/home/home-scroll/scroll.png" alt="">      
-          </a-back-top>
+          <BackTop />
 
           <!-- 下箭头 -->
           <div class="icon-down" @click="iconDownScroll">
@@ -210,7 +208,7 @@
         <font-awesome-icon class="course-icon" :icon="['fas','crow']" />
         <h1>SHARE:Prototype</h1>
         <div class="course-all-content">
-          <nuxt-link to="/about">
+          <nuxt-link to="/home-resource1">
             <div class="course-icon-content">
               <img class="course-img" src="../assets/home/tipsImage/tip1.jpg" alt />
               <div class="course-filter">
@@ -219,7 +217,7 @@
               </div>
             </div>
           </nuxt-link>
-          <nuxt-link to="/about">
+          <nuxt-link to="/home-resource2">
             <div class="course-icon-content">
               <img class="course-img" src="../assets/home/tipsImage/tip2.jpg" alt />
               <div class="course-filter">
@@ -228,7 +226,7 @@
               </div>
             </div>
           </nuxt-link>
-          <nuxt-link to="/about">
+          <nuxt-link to="/home-resource3">
             <div class="course-icon-content">
               <img class="course-img" src="../assets/home/tipsImage/tip3.jpg" alt />
               <div class="course-filter">
@@ -259,6 +257,7 @@
 
 <script>
 import Nav from '../components/nav'
+import BackTop from '../components/backtop'
 import Footer from '../components/footer'
 export default {
   name: "Home",
@@ -294,6 +293,7 @@ export default {
   computed: {},
   components: {
     Nav,
+    BackTop,
     Footer
   },
   mounted() {
@@ -775,7 +775,7 @@ export default {
     font-size: 30px;
     color: #fff;
     margin:0 auto;
-    animation: icon-change .8s linear infinite alternate;
+    animation: icon-change 1.2s linear infinite alternate;
     svg {
       width: inherit;
       height: inherit;
@@ -786,7 +786,7 @@ export default {
   }
   @keyframes icon-change {
     from {
-      margin-top: 90px;
+      margin-top: 95px;
     }
     to {
       margin-top: 120px;
@@ -834,23 +834,7 @@ export default {
   }
 
   //scrollTop-img
-  .back-top-img {
-    position: fixed;
-    z-index: 1;
-    width: 75px;
-    right: 95px;
-    bottom: 200px;
-    animation: showIt 1.5s ease;
-    animation-direction: alternate;
-  }
-  @keyframes showIt {
-    from{
-      bottom: 1000px;
-    }
-    to{
-      bottom: 200px;
-    }
-  }
+  
 
   // news
   .news {
