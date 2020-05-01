@@ -45,7 +45,8 @@ module.exports = {
   modules: [
     // 引入新增nuxt-fontawesome套件
     'nuxt-fontawesome',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/markdownit'
   ],
     /*
     ** FontAwesome module configuration 配置FontAwesome
@@ -66,6 +67,18 @@ module.exports = {
         }
       ]
     },
+    /*
+    ** [optional] markdownit options
+    */
+    markdownit: {
+      preset: 'default',
+      linkify: true,
+      breaks: true,
+      use:[
+        'markdown-it-div',
+        'markdown-it-attrs'
+      ]
+    },
   /*
   ** Build configuration
   */
@@ -73,6 +86,12 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    // loaders:[
+    //   {
+    //     test:/\.md$/,
+    //     use:[{loader:"html-loader"},{loader:"markdown-loader",options:{}}]
+    //   }
+    // ],
     // webpack-bundle-analyzer
     //nuxt build --analyzer
     analyzer: true,
