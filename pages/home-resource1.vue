@@ -96,7 +96,8 @@ export default {
     margin: 0 auto;
     margin-top: 60px;
     /deep/pre{
-      width: 100%;
+      margin: 0 auto;
+      width: 80%;
       padding: 8px;
       background: #111;
       border-radius: 5px;

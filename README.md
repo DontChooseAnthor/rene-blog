@@ -10,5 +10,6 @@
 - 计划使用redis作为内存数据库，优化负载性能
 - 通过markdown形式上传文章内容，通过前端展示到页面上:showdown/ @nuxtjs/markdownit / @nuxtjs/markdownit-loader[需要安装依赖包]  markdown代码高亮使用highlight.js
 - 使用koa-cors处理跨域问题
-- 选择vue-quill-editor/mavonEditor富文本编辑器
+- 选择mavonEditor富文本编辑器
 - 资源页面图片部分使用瀑布流展示
+- 统一几个常用组件作为公共组件，节省代码量
