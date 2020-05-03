@@ -213,7 +213,7 @@
               <img class="course-img" src="../assets/home/tipsImage/tip1.jpg" alt />
               <div class="course-filter">
                 <span class="course-content-a">Promise</span>
-                <span class="course-content-b">Promise理解及原理</span>
+                <span class="course-content-b">Promise到底是什么</span>
               </div>
             </div>
           </nuxt-link>
@@ -222,7 +222,7 @@
               <img class="course-img" src="../assets/home/tipsImage/tip2.jpg" alt />
               <div class="course-filter">
                 <span class="course-content-a">Vue</span>
-                <span class="course-content-b">Vue响应式探索</span>
+                <span class="course-content-b">拆开Vue看看里面有什么</span>
               </div>
             </div>
           </nuxt-link>
@@ -231,7 +231,7 @@
               <img class="course-img" src="../assets/home/tipsImage/tip3.jpg" alt />
               <div class="course-filter">
                 <span class="course-content-a">Hybird App</span>
-                <span class="course-content-b">混合开发模式</span>
+                <span class="course-content-b">冒出来个混合开发模式</span>
               </div>
             </div>
           </nuxt-link>
