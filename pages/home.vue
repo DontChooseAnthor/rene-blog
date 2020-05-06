@@ -206,7 +206,7 @@
       </div>
       <div class="course">
         <font-awesome-icon class="course-icon" :icon="['fas','crow']" />
-        <h1>SHARE:Prototype</h1>
+        <h1>Share with you</h1>
         <div class="course-all-content">
           <nuxt-link to="/home-resource1">
             <div class="course-icon-content">
@@ -239,7 +239,7 @@
       </div>
       <div class="share">
         <font-awesome-icon class="share-icon" :icon="['fas','frog']" />
-        <h1>SHARE:Articles</h1>
+        <h1>Something interesting</h1>
         <div class="share-content">
           <div class="share-info">
             <h2>title</h2>

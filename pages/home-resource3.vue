@@ -52,6 +52,7 @@
             <div class="section">Hybrid App</div>
             <font-awesome-icon class="section-icon" :icon="['fas','dog']" />
           </div>
+          <img src="../public/Artical/Hybrid/hybrid-app.jpg" alt="">
           <div class="section-container">
             正是因为原生App和Web App都拥有各自的优势和局限性，所以诞生出一种新的开发方式——Hybrid App混合开发，即混合了Native和Web技术的开发，这种开发方式下诞生的应用既有HTML5简单的开发和快速迭代能力，也包含了原生强大的底层功能同时可以使用系统中的原生组件。现在主流的有三种混合方案，以不同的UI渲染机制划分：
             <ul>
@@ -96,6 +97,7 @@
           <div class="section">JSBridge代码注入</div>
           <font-awesome-icon class="section-icon" :icon="['fas','dog']" />
           </div>
+          <img src="../public/Artical/Hybrid/JSBridge.jpg" alt="">
           <div class="section-container-short">
             从图中可以看出，实现JSBridge大概分成两个部分：
             <ul>
@@ -219,6 +221,10 @@ export default {
     letter-spacing: .5px;
     color: #666;
     animation: showArt 1.5s ease;
+    img{
+      width: 55vw;
+      padding: 0 10vw;
+    }
     /deep/pre{
       margin: 10px auto;
       width: 90%;
@@ -273,7 +279,20 @@ export default {
         li{
           margin-top: 10px;
         }
+      }
+      dl{
+        width: 90%;
+        border: 1px dashed orange;
+        margin: 5px auto;
+        text-align: left;
+        padding: 15px 15px;
+        border-radius: 10px;
+        dt{
+          color: orange;
+          font-weight: 600;
         }
+      }
+    
     }
     .section-container-short{
       text-align: left;

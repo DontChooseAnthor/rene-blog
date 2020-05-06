@@ -51,7 +51,7 @@ export default {
 <style scoped>
 .back-top {
   background: url("../assets/home/home-scroll/scroll.png") no-repeat;
-  width: 6vw;
+  width: 80px;
   height: 1000px;
   transition: all 1s ease;
   position: fixed;
@@ -61,7 +61,7 @@ export default {
 }
 .hoverbox {
   position: absolute;
-  width: 6vw;
+  width: 80px;
   height: 110px;
   z-index: 11;
   bottom: 10vh;
