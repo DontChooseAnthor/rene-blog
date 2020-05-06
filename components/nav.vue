@@ -93,14 +93,14 @@ export default {
     z-index: 99;
   }
   .headername:hover {
-    color: #e67e22;
+    color: orange;
   }
   .shownav {
     float: right;
     position: absolute;
     height: 70px;
     right: 220px;
-    animation: navshow .6s linear;
+    animation: navshow 1s linear;
     ul {
       display: inline-flex;
       list-style: none;
@@ -134,7 +134,7 @@ export default {
       }
       li:hover > .navcontent {
         border-bottom-color: #e67e22;
-        color: #e67e22;
+        color: orange;
         border-bottom-width: 5.5px;
       }
     }
@@ -183,12 +183,12 @@ export default {
       transition: all 0.5s;
     }
     .search:hover {
-      color: #e67e22;
+      color: orange;
       transform: translateY(-5px);
       cursor: pointer;
     }
     .user:hover {
-      color: #e67e22;
+      color: orange;
       transform: translateY(-5px);
       cursor: pointer;
     }

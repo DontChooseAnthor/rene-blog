@@ -846,7 +846,7 @@ export default {
     .remind {
       top: 55px;
       position: absolute;
-      width: 750px;
+      width: 820px;
       height: 65px;
       background: rgb(253, 255, 253);
       line-height: 65px;
@@ -867,8 +867,8 @@ export default {
     }
     .course {
       position: absolute;
-      top: 150px;
-      width: 750px;
+      top: 180px;
+      width: 820px;
       h1 {
         font-size: 18px;
         width: inherit;
@@ -893,10 +893,10 @@ export default {
       }
       .course-icon-content {
         position: relative;
-        width: 240px;
-        height: 160px;
+        width: 265px;
+        height: 170px;
         border-radius: 10px;
-        margin-top: 20px;
+        margin-top: 30px;
         overflow: hidden;
         transition: all 1s;
         margin-right: 10px;
@@ -910,13 +910,13 @@ export default {
         }
         .course-content-a {
           position: absolute;
-          width: 240px;
+          width: 265px;
           height: 50px;
           background: #000000;
           margin-top: 30px;
           text-align: center;
           line-height: 50px;
-          transform: translateX(-240px);
+          transform: translateX(-265px);
           transition: all 0.6s;
           color: #fff;
           text-transform: uppercase;
@@ -925,12 +925,12 @@ export default {
         }
         .course-content-b {
           position: absolute;
-          width: 240px;
+          width: 265px;
           height: 60px;
           margin-top: 86px;
           line-height: 60px;
           text-align: center;
-          transform: translateX(240px);
+          transform: translateX(265px);
           transition: all 0.6s;
           font-style: italic;
           color: #bdc3c7;
@@ -951,8 +951,8 @@ export default {
     }
     .share {
       position: absolute;
-      top: 420px;
-      width: 750px;
+      top: 500px;
+      width: 820px;
       h1 {
         font-size: 18px;
         width: inherit;

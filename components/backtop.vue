@@ -53,7 +53,7 @@ export default {
   background: url("../assets/home/home-scroll/scroll.png") no-repeat;
   width: 6vw;
   height: 1000px;
-  transition: all 1.2s ease;
+  transition: all 1s ease;
   position: fixed;
   z-index: 10;
   right: 5vw;
