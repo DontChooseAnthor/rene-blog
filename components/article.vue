@@ -117,7 +117,7 @@ export default {
         font-size: 30px;
         padding: 0;
         font-weight: 600;
-        color: orange;
+        color: #55efc4;
       }
     }
   
@@ -126,7 +126,7 @@ export default {
       font-weight: 600;
       margin:20px 0;
       margin-top: 60px;
-      color: orange;
+      color: #55efc4;
       position: relative;
       display: inline-flex;
       line-height: 21px;
@@ -143,7 +143,7 @@ export default {
       ul{
         list-style: none;
         width: 90%;
-        border: 1px dashed orange;
+        border: 1px dashed #55efc4;
         margin: 5px auto;
         text-align: left;
         padding: 15px 15px;
@@ -154,13 +154,13 @@ export default {
       }
       dl{
         width: 90%;
-        border: 1px dashed orange;
+        border: 1px dashed #55efc4;
         margin: 5px auto;
         text-align: left;
         padding: 15px 15px;
         border-radius: 10px;
         dt{
-          color: orange;
+          color: #55efc4;
           font-weight: 600;
         }
       }
@@ -174,7 +174,7 @@ export default {
        ul{
         list-style: none;
         width: 90%;
-        border: 1px dashed orange;
+        border: 1px dashed #55efc4;
         margin: 5px auto;
         text-align: left;
         padding: 15px 15px;
@@ -185,13 +185,13 @@ export default {
       }
       dl{
         width: 90%;
-        border: 1px dashed orange;
+        border: 1px dashed #55efc4;
         margin: 5px auto;
         text-align: left;
         padding: 15px 15px;
         border-radius: 10px;
         dt{
-          color: orange;
+          color: #55efc4;
           font-weight: 600;
         }
       }
