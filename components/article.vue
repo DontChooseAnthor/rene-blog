@@ -1,11 +1,11 @@
 <template>
   <div>
-      <Nav />
-      <div class="container">
-          <slot />   
-      </div>
-      <BackTop />
-      <Footer class="footer" />
+    <Nav />
+    <div class="container">
+      <slot />
+    </div>
+    <BackTop />
+    <Footer class="footer" />
   </div>
 </template>
 
@@ -13,24 +13,22 @@
 import Nav from "../components/nav";
 import BackTop from "../components/backtop";
 import Footer from "../components/footer";
-import 'highlight.js/styles/monokai-sublime.css';
+import "highlight.js/styles/monokai-sublime.css";
 export default {
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   },
-  components:	{
+  components: {
     Nav,
     BackTop,
     Footer
   },
-  methods: {},
-}
+  methods: {}
+};
 </script>
 
 <style lang="less" scoped>
-  .container {
+.container {
   width: 100%;
   overflow: hidden;
   .header {
@@ -73,12 +71,12 @@ export default {
     }
   }
   @keyframes showHeader {
-    from{
-      transform: translate(100px,100px);
+    from {
+      transform: translate(100px, 100px);
       opacity: 0;
     }
-    to{
-      transform: translate(0,0);
+    to {
+      transform: translate(0, 0);
       opacity: 1;
     }
   }
@@ -89,15 +87,39 @@ export default {
     margin-top: 15vh;
     font-weight: 500;
     text-align: justify;
-    line-height: 30px;  
-    letter-spacing: .5px;
+    line-height: 30px;
+    letter-spacing: 0.5px;
     color: #666;
     animation: showArt 1.5s ease;
-    img{
+    img {
       width: 55vw;
       padding: 0 10vw;
     }
-    /deep/pre{
+    code {
+      color: rgb(211, 142, 153);
+      padding: 2px 5px;
+      background-color: rgb(238, 235, 235);
+      border-radius: 5px;
+    }
+    table {
+      border: 1px solid #55efc4;
+      border-collapse: collapse;
+      font-size: 14px;
+      width: 90%;
+      margin: 0 auto;
+      /deep/tr {
+        border: 1px solid #55efc4;
+
+        td {
+          border: 1px solid #55efc4;
+        }
+        th {
+          border: 1px solid #55efc4;
+          background-color: rgba(113, 226, 198, 0.4);
+        }
+      }
+    }
+    /deep/pre {
       margin: 10px auto;
       width: 90%;
       padding: 8px;
@@ -105,42 +127,42 @@ export default {
       border-radius: 5px;
       color: #fff;
       overflow: scroll;
-      opacity: .9;
+      opacity: 0.9;
       letter-spacing: 0;
     }
     // 取消默认的滚动条样式
-    /deep/pre::-webkit-scrollbar{
+    /deep/pre::-webkit-scrollbar {
       display: none;
     }
-    .begin{
-      span{
+    .begin {
+      span {
         font-size: 30px;
         padding: 0;
         font-weight: 600;
         color: #55efc4;
       }
     }
-  
-    .main-section{
-      font-size: 21px; 
+
+    .main-section {
+      font-size: 21px;
       font-weight: 600;
-      margin:20px 0;
+      margin: 20px 0;
       margin-top: 60px;
       color: #55efc4;
       position: relative;
       display: inline-flex;
       line-height: 21px;
-      
-      .section-icon{
+
+      .section-icon {
         position: absolute;
         right: -30px;
       }
     }
-    .section-container{
-      img{
-      width: inherit;
+    .section-container {
+      img {
+        width: inherit;
       }
-      ul{
+      ul {
         list-style: none;
         width: 90%;
         border: 1px dashed #55efc4;
@@ -148,68 +170,77 @@ export default {
         text-align: left;
         padding: 15px 15px;
         border-radius: 10px;
-        li{
+        li {
           margin-top: 10px;
         }
       }
-      dl{
+      dl {
         width: 90%;
         border: 1px dashed #55efc4;
         margin: 5px auto;
         text-align: left;
         padding: 15px 15px;
         border-radius: 10px;
-        dt{
-          color: #55efc4;
-          font-weight: 600;
-        }
-      }
-    
-    }
-    .section-container-short{
-      text-align: left;
-      img{
-      width: 55vw;
-      }
-       ul{
-        list-style: none;
-        width: 90%;
-        border: 1px dashed #55efc4;
-        margin: 5px auto;
-        text-align: left;
-        padding: 15px 15px;
-        border-radius: 10px;
-        li{
-          margin-top: 10px;
-        }
-      }
-      dl{
-        width: 90%;
-        border: 1px dashed #55efc4;
-        margin: 5px auto;
-        text-align: left;
-        padding: 15px 15px;
-        border-radius: 10px;
-        dt{
-          color: #55efc4;
-          font-weight: 600;
-        }
-      }
-    }
 
+        dt {
+          color: #55efc4;
+          font-weight: 600;
+        }
+        dd {
+          img {
+            margin-left: -10vw;
+          }
+        }
+      }
+    }
+    .section-container-short {
+      text-align: left;
+      img {
+        width: 55vw;
+      }
+      ul {
+        list-style: none;
+        width: 90%;
+        border: 1px dashed #55efc4;
+        margin: 5px auto;
+        text-align: left;
+        padding: 15px 15px;
+        border-radius: 10px;
+        li {
+          margin-top: 10px;
+        }
+      }
+      dl {
+        width: 90%;
+        border: 1px dashed #55efc4;
+        margin: 5px auto;
+        text-align: left;
+        padding: 15px 15px;
+        border-radius: 10px;
+        dt {
+          color: #55efc4;
+          font-weight: 600;
+        }
+        dd {
+          img {
+            margin-left: -5vw;
+          }
+        }
+      }
+    }
   }
   @keyframes showArt {
-    from{
+    from {
       opacity: 0;
       transform: translateY(500px);
     }
-    to{
+    to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 }
-.footer{
+.footer {
   margin-top: 150px;
 }
 </style>

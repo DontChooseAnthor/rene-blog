@@ -9,6 +9,13 @@
         <nuxt-link to="./chat-page1">1</nuxt-link>
         <nuxt-link to="./chat-page2">2</nuxt-link>
         <nuxt-link to="./chat-page3">3</nuxt-link>
+        <nuxt-link to="./chat-page4">4</nuxt-link>
+        <nuxt-link to="./chat-page5">5</nuxt-link>
+        <nuxt-link to="./chat-page6">6</nuxt-link>
+        <nuxt-link to="./chat-page7">7</nuxt-link>
+        <nuxt-link to="./chat-page8">8</nuxt-link>
+        <nuxt-link to="./chat-page9">9</nuxt-link>
+        <nuxt-link to="./chat-page10">10</nuxt-link>
 
       </div>
     </re-article>
