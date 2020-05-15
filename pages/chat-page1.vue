@@ -2,12 +2,12 @@
   <div>
     <re-article>
       <div class="header">
-        <p class="title1">Flex和Grid</p>
+        <p class="title1">Flex&amp;Grid</p>
         <p class="title2">CSS3搞出来的前端布局方式~</p>
       </div>
       <div class="article">
         <div class="begin">
-          <span>说</span>起前端布局，大部分人都会想起传统模型布局，然而传统布局有一定的局限性，比如实现垂直居中的问题。因此网页开发中制定了新的布局方式——Flex和Grid
+          <span>说</span>起前端布局，大部分人都会想起传统模型布局，然而传统布局有一定的局限性，比如实现垂直居中的问题。因此网页开发中制定了新的布局方式——Flex&amp;Grid
         </div>
 
         <div class="main-section">
