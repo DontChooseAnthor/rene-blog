@@ -100,7 +100,7 @@ export default {
     position: absolute;
     height: 70px;
     right: 220px;
-    animation: navshow 1s linear;
+    animation: navshow .8s ease;
     ul {
       display: inline-flex;
       list-style: none;
@@ -133,7 +133,7 @@ export default {
         }
       }
       li:hover > .navcontent {
-        border-bottom-color: #e67e22;
+        border-bottom-color: orange;
         color: orange;
         border-bottom-width: 5.5px;
       }
@@ -141,20 +141,20 @@ export default {
     @keyframes navshow {
       0% {
         opacity: 0;
-        right: -80px;
+        right: 10px;
          }
-      25% {
-        opacity: 0.2;
-        right: 0px;
-      }
-      50% {
-        opacity: 0.4;
-        right: 80px;
-      }
-      75%{
-        opacity: 0.7;
-        right: 160px;
-      }
+      // 25% {
+      //   opacity: 0.2;
+      //   right: 60px;
+      // }
+      // 50% {
+      //   opacity: 0.4;
+      //   right: 110px;
+      // }
+      // 75%{
+      //   opacity: 0.7;
+      //   right: 160px;
+      // }
       100% {
         opacity: .9;
         right: 220px;

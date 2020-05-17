@@ -6,6 +6,9 @@
         <p class="title2">在浏览器中敲入URL到获取网页内容之间发生了什么~</p>
       </div>
       <div class="article">
+        <div class="begin">
+          <span>H</span> TTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等
+        </div>
         <div class="main-section">
           <div class="section">URL&URI</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />

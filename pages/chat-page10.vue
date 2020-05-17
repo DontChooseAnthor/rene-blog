@@ -328,120 +328,153 @@
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
         </div>
         <div class="section-container-short">
-          如果把源码中<code>main.js</code>修改为：<br>
-          <div v-html="webpack3"></div>
-          重新构建后会输出两个文件，分别是执行入口文件<code>bundle.js</code>和异步加载文件<code>0.bundle.js</code> <br>
-          其中<code>0.bundle.js</code>内容如下：
-          <div v-html="webpack4"></div>
-          这里的<code>bundle.js</code>和上文的<code>bundle.js</code>是有区别的
+          如果把源码中
+          <code>main.js</code>修改为：
+          <br />
+          <div v-html="webpack3"></div>重新构建后会输出两个文件，分别是执行入口文件
+          <code>bundle.js</code>和异步加载文件
+          <code>0.bundle.js</code>
+          <br />其中
+          <code>0.bundle.js</code>内容如下：
+          <div v-html="webpack4"></div>这里的
+          <code>bundle.js</code>和上文的
+          <code>bundle.js</code>是有区别的
           <dl>
-            <dd>多了一个 <code> __webpack_require__.e </code>用于加载被分割出去的，需要异步加载的 Chunk 对应的文件</dd>
-            <dd>多了一个<code> webpackJsonp </code>函数用于从异步加载的文件中安装模块</dd>
-          </dl>
-          在使用了 CommonsChunkPlugin 去提取公共代码时输出的文件和使用了异步加载时输出的文件是一样的，都会有 <code> __webpack_require__.e </code> 和 <code> webpackJsonp </code> ,原因在于提取公共代码和异步加载本质上都是代码分割
+            <dd>
+              多了一个
+              <code>__webpack_require__.e</code>用于加载被分割出去的，需要异步加载的 Chunk 对应的文件
+            </dd>
+            <dd>
+              多了一个
+              <code>webpackJsonp</code>函数用于从异步加载的文件中安装模块
+            </dd>
+          </dl>在使用了 CommonsChunkPlugin 去提取公共代码时输出的文件和使用了异步加载时输出的文件是一样的，都会有
+          <code>__webpack_require__.e</code> 和
+          <code>webpackJsonp</code> ,原因在于提取公共代码和异步加载本质上都是代码分割
         </div>
         <div class="main-section">
           <div class="section">编写Loader</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
         </div>
         <div class="section-container-short">
-          Loader 就像是一个翻译员，能把源文件经过转化后输出新的结果，并且一个文件还可以链式的经过多个翻译员翻译 <br>
-          以处理SCSS文件为例：<br>
+          Loader 就像是一个翻译员，能把源文件经过转化后输出新的结果，并且一个文件还可以链式的经过多个翻译员翻译
+          <br />以处理SCSS文件为例：
+          <br />
           <dl>
-            <dd>SCSS 源代码会先交给 <code>sass-loader</code> 把 SCSS 转换成 CSS</dd>
-            <dd>把  <code>sass-loader</code>  输出的 CSS 交给 <code>css-loader</code> 处理，找出 CSS 中依赖的资源、压缩 CSS 等</dd>
-            <dd>把 <code>css-loader</code> 输出的 CSS 交给 <code>style-loader</code> 处理，转换成通过脚本加载的 JavaScript 代码</dd>
-          </dl>
-          可以看出以上处理过程需要有顺序的链式执行，先<code>sass-loader</code>再<code>css-loader</code>再<code>style-loader</code>  
-          </div>
+            <dd>
+              SCSS 源代码会先交给
+              <code>sass-loader</code> 把 SCSS 转换成 CSS
+            </dd>
+            <dd>
+              把
+              <code>sass-loader</code> 输出的 CSS 交给
+              <code>css-loader</code> 处理，找出 CSS 中依赖的资源、压缩 CSS 等
+            </dd>
+            <dd>
+              把
+              <code>css-loader</code> 输出的 CSS 交给
+              <code>style-loader</code> 处理，转换成通过脚本加载的 JavaScript 代码
+            </dd>
+          </dl>可以看出以上处理过程需要有顺序的链式执行，先
+          <code>sass-loader</code>再
+          <code>css-loader</code>再
+          <code>style-loader</code>
+        </div>
 
-      
-      <div class="main-section">
+        <div class="main-section">
           <div class="section">Loader的职责</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        由上面的例子可以看出：一个 Loader 的职责是单一的，只需要完成一种转换。 如果一个源文件需要经历多步转换才能正常使用，就通过多个 Loader 去转换。 在调用多个 Loader 去转换一个文件时，每个 Loader 会链式的顺序执行， 第一个 Loader 将会拿到需处理的原内容，上一个 Loader 处理后的结果会传给下一个接着处理，最后的 Loader 将处理后的最终结果返回给 Webpack <br>
-
-所以，在你开发一个 Loader 时，请保持其职责的单一性，你只需关心输入和输出
-      </div>
-      <div class="main-section">
+        </div>
+        <div class="section-container-short">
+          由上面的例子可以看出：一个 Loader 的职责是单一的，只需要完成一种转换。 如果一个源文件需要经历多步转换才能正常使用，就通过多个 Loader 去转换。 在调用多个 Loader 去转换一个文件时，每个 Loader 会链式的顺序执行， 第一个 Loader 将会拿到需处理的原内容，上一个 Loader 处理后的结果会传给下一个接着处理，最后的 Loader 将处理后的最终结果返回给 Webpack
+          <br />所以，在你开发一个 Loader 时，请保持其职责的单一性，你只需关心输入和输出
+        </div>
+        <div class="main-section">
           <div class="section">Loader基础</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        由于 Webpack 是运行在 Node.js 之上的，一个 Loader 其实就是一个 Node.js 模块，这个模块需要导出一个函数。 这个导出的函数的工作就是获得处理前的原内容，对原内容执行处理后，返回处理后的内容 <br>
-        一个最简单的Loader的源码如下：
-        <div v-html="webpack5"></div>
-        由于 Loader 运行在 Node.js 中，你可以调用任何 Node.js 自带的 API，或者安装第三方模块进行调用：
-        <div v-html="webpack6"></div>
-      </div>
-      <div class="main-section">
+        </div>
+        <div class="section-container-short">
+          由于 Webpack 是运行在 Node.js 之上的，一个 Loader 其实就是一个 Node.js 模块，这个模块需要导出一个函数。 这个导出的函数的工作就是获得处理前的原内容，对原内容执行处理后，返回处理后的内容
+          <br />一个最简单的Loader的源码如下：
+          <div v-html="webpack5"></div>由于 Loader 运行在 Node.js 中，你可以调用任何 Node.js 自带的 API，或者安装第三方模块进行调用：
+          <div v-html="webpack6"></div>
+        </div>
+        <div class="main-section">
           <div class="section">Loader进阶</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        以上只是个最简单的 Loader，Webpack 还提供一些 API 供 Loader 调用，下面来一一介绍
-      <dl>
-        <dt>获得 Loader 的 <code>options</code></dt>
-        <dd>在最上面处理 SCSS 文件的 Webpack 配置中，给<code>css-loader</code>传了 <code>options</code>参数，以控制<code>css-loader</code>。 如何在自己编写的 Loader 中获取到用户传入的 options 呢？需要这样做：
-        <div v-html="webpack7"></div></dd>
-        <dt>返回其它结果</dt>
-        <dd>上面的 Loader 都只是返回了原内容转换后的内容，但有些场景下还需要返回除了内容之外的东西<br>
-        例如以用 <code>babel-loader</code> 转换 ES6 代码为例，它还需要输出转换后的 ES5 代码对应的 Source Map，以方便调试源码。 为了把 Source Map 也一起随着 ES5 代码返回给 Webpack，可以这样写：
-        <div v-html="webpack8"></div>
-        其中的 <code>this.callback</code> 是 Webpack 给 Loader 注入的 API，以方便 Loader 和 Webpack 之间通信。 <code>this.callback</code> 的详细使用方法如下：
-        <div v-html="webpack9"></div>
-        Source Map 的生成很耗时，通常在开发环境下才会生成 Source Map，其它环境下不用生成，以加速构建。 为此 Webpack 为 Loader 提供了 <code>this.sourceMap</code> API 去告诉 Loader 当前构建环境下用户是否需要 Source Map。 如果你编写的 Loader 会生成 Source Map，请考虑到这点
-        </dd>
-      </dl>
-      </div>
-      <div class="main-section">
+        </div>
+        <div class="section-container-short">
+          以上只是个最简单的 Loader，Webpack 还提供一些 API 供 Loader 调用，下面来一一介绍
+          <dl>
+            <dt>
+              获得 Loader 的
+              <code>options</code>
+            </dt>
+            <dd>
+              在最上面处理 SCSS 文件的 Webpack 配置中，给
+              <code>css-loader</code>传了
+              <code>options</code>参数，以控制
+              <code>css-loader</code>。 如何在自己编写的 Loader 中获取到用户传入的 options 呢？需要这样做：
+              <div v-html="webpack7"></div>
+            </dd>
+            <dt>返回其它结果</dt>
+            <dd>
+              上面的 Loader 都只是返回了原内容转换后的内容，但有些场景下还需要返回除了内容之外的东西
+              <br />例如以用
+              <code>babel-loader</code> 转换 ES6 代码为例，它还需要输出转换后的 ES5 代码对应的 Source Map，以方便调试源码。 为了把 Source Map 也一起随着 ES5 代码返回给 Webpack，可以这样写：
+              <div v-html="webpack8"></div>其中的
+              <code>this.callback</code> 是 Webpack 给 Loader 注入的 API，以方便 Loader 和 Webpack 之间通信。
+              <code>this.callback</code> 的详细使用方法如下：
+              <div v-html="webpack9"></div>Source Map 的生成很耗时，通常在开发环境下才会生成 Source Map，其它环境下不用生成，以加速构建。 为此 Webpack 为 Loader 提供了
+              <code>this.sourceMap</code> API 去告诉 Loader 当前构建环境下用户是否需要 Source Map。 如果你编写的 Loader 会生成 Source Map，请考虑到这点
+            </dd>
+          </dl>
+        </div>
+        <div class="main-section">
           <div class="section">同步与异步</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        Loader 有同步和异步之分，上面介绍的 Loader 都是同步的 Loader，因为它们的转换流程都是同步的，转换完成后再返回结果。 但在有些场景下转换的步骤只能是异步完成的，例如你需要通过网络请求才能得出结果，如果采用同步的方式网络请求就会阻塞整个构建，导致构建非常缓慢<br>
-        在转换步骤是异步时，你可以这样：
-        <div v-html="webpack10"></div>
-      </div>
-      <div class="main-section">
+        </div>
+        <div class="section-container-short">
+          Loader 有同步和异步之分，上面介绍的 Loader 都是同步的 Loader，因为它们的转换流程都是同步的，转换完成后再返回结果。 但在有些场景下转换的步骤只能是异步完成的，例如你需要通过网络请求才能得出结果，如果采用同步的方式网络请求就会阻塞整个构建，导致构建非常缓慢
+          <br />在转换步骤是异步时，你可以这样：
+          <div v-html="webpack10"></div>
+        </div>
+        <div class="main-section">
           <div class="section">处理二进制数据</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        在默认的情况下，Webpack 传给 Loader 的原内容都是 UTF-8 格式编码的字符串。 但有些场景下 Loader 不是处理文本文件，而是处理二进制文件，例如 <code>file-loader</code> ，就需要 Webpack 给 Loader 传入二进制格式的数据。 为此，你需要这样编写 Loader：
-        <div v-html="webpack11"></div>
-        以上代码中最关键的代码是最后一行 <code>module.exports.raw = true</code>;，没有该行 Loader 只能拿到字符串
-      </div>
-      <div class="main-section">
+        </div>
+        <div class="section-container-short">
+          在默认的情况下，Webpack 传给 Loader 的原内容都是 UTF-8 格式编码的字符串。 但有些场景下 Loader 不是处理文本文件，而是处理二进制文件，例如
+          <code>file-loader</code> ，就需要 Webpack 给 Loader 传入二进制格式的数据。 为此，你需要这样编写 Loader：
+          <div v-html="webpack11"></div>以上代码中最关键的代码是最后一行
+          <code>module.exports.raw = true</code>;，没有该行 Loader 只能拿到字符串
+        </div>
+        <div class="main-section">
           <div class="section">缓存加速</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        在有些情况下，有些转换操作需要大量计算非常耗时，如果每次构建都重新执行重复的转换操作，构建将会变得非常缓慢。 为此，Webpack 会默认缓存所有 Loader 的处理结果，也就是说在需要被处理的文件或者其依赖的文件没有发生变化时， 是不会重新调用对应的 Loader 去执行转换操作的 <br>
-        如果你想让 Webpack 不缓存该 Loader 的处理结果，可以这样：
-        <div v-html="webpack12"></div>
-      </div>
-      <div class="main-section">
+        </div>
+        <div class="section-container-short">
+          在有些情况下，有些转换操作需要大量计算非常耗时，如果每次构建都重新执行重复的转换操作，构建将会变得非常缓慢。 为此，Webpack 会默认缓存所有 Loader 的处理结果，也就是说在需要被处理的文件或者其依赖的文件没有发生变化时， 是不会重新调用对应的 Loader 去执行转换操作的
+          <br />如果你想让 Webpack 不缓存该 Loader 的处理结果，可以这样：
+          <div v-html="webpack12"></div>
+        </div>
+        <div class="main-section">
           <div class="section">加载本地 Loader</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        在开发 Loader 的过程中，为了测试编写的 Loader 是否能正常工作，需要把它配置到 Webpack 中后，才可能会调用该 Loader。 在前面的章节中，使用的 Loader 都是通过 Npm 安装的，要使用 Loader 时会直接使用 Loader 的名称，代码如下：
-        <div v-html="webpack13"></div>
-      </div>
-      <div class="main-section">
+        </div>
+        <div class="section-container-short">
+          在开发 Loader 的过程中，为了测试编写的 Loader 是否能正常工作，需要把它配置到 Webpack 中后，才可能会调用该 Loader。 在前面的章节中，使用的 Loader 都是通过 Npm 安装的，要使用 Loader 时会直接使用 Loader 的名称，代码如下：
+          <div v-html="webpack13"></div>
+        </div>
+        <div class="main-section">
           <div class="section">原理总结</div>
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
-      </div>
-      <div class="section-container-short">
-        Webpack 是一个庞大的 Node.js 应用，如果你阅读过它的源码，你会发现实现一个完整的 Webpack 需要编写非常多的代码。 但你无需了解所有的细节，只需了解其整体架构和部分细节即可。 <br>
-
-对 Webpack 的使用者来说，它是一个简单强大的工具； 对 Webpack 的开发者来说，它是一个扩展性的高系统。 <br>
-
-Webpack 之所以能成功，在于它把复杂的实现隐藏了起来，给用户暴露出的只是一个简单的工具，让用户能快速达成目的。 同时整体架构设计合理，扩展性高，开发扩展难度不高，通过社区补足了大量缺失的功能，让 Webpack 几乎能胜任任何场景
-      </div>
+        </div>
+        <div class="section-container-short">
+          Webpack 是一个庞大的 Node.js 应用，如果你阅读过它的源码，你会发现实现一个完整的 Webpack 需要编写非常多的代码。 但你无需了解所有的细节，只需了解其整体架构和部分细节即可。
+          <br />对 Webpack 的使用者来说，它是一个简单强大的工具； 对 Webpack 的开发者来说，它是一个扩展性的高系统。
+          <br />Webpack 之所以能成功，在于它把复杂的实现隐藏了起来，给用户暴露出的只是一个简单的工具，让用户能快速达成目的。 同时整体架构设计合理，扩展性高，开发扩展难度不高，通过社区补足了大量缺失的功能，让 Webpack 几乎能胜任任何场景
+        </div>
       </div>
     </re-article>
   </div>
