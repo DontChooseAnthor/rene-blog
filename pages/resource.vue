@@ -1,56 +1,76 @@
 <template>
   <div class="main">
-    <div class="contain">
-      <Nav />
-      <div class="background">
-        <canvas id="canvas" width="2000" height="450"></canvas>
-        <h2 class="bc-title">
-          Here,the dusk is sudden,the night silent,
-          <br />the panoply of stars immense and brilliant
-        </h2>
-        <!-- svg波浪 -->
-        <div class="svg-wave">
-          <svg
-            class="waves"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 28"
-            preserveAspectRatio="none"
-            shape-rendering="auto"
-          >
-            <defs>
-              <path
-                id="gentle-wave"
-                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-              />
-            </defs>
-            <g class="parallax">
-              <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(229, 226, 226,0.3)" />
-              <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(229, 226, 226,0.5)" />
-              <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(229, 226, 226,0.7)" />
-              <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(229, 226, 226,1)" />
-            </g>
-          </svg>
+    <BackTop />
+    <!-- 弹出图片展示框 -->
+    <div class="dialog" v-show="dialog" id="dialog">
+          <div class="dialog-control">
+            <a-icon type="close-circle" class="close" :style="{  color: 'gray' }" @click="close" />
+            <a-icon type="left" class="change-left" :style="{  color: 'gray' }" @click="turnLeft" />
+            <a-icon type="right" class="change-right" :style="{  color: 'gray' }" @click="turnRight" />
         </div>
-      </div>
-      
-      <div class="waterfall">
-        <div class="title">
-          <p>寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷</p>
+        <div class="dialog-share">
+          <p class="dialog-share-text">
+            <font-awesome-icon class="showtitle-icon" :icon="['fas','share-alt']" />
+            分享到：
+          </p>
+          <a-icon type="wechat" @click="shareWechat" class="dialog-share-item" :style="{  color: 'green' }" />
+          <a-icon type="weibo" @click="shareWeibo" class="dialog-share-item" :style="{  color: 'orange' }" />
+          <a-icon type="qq" @click="shareQQ" class="dialog-share-item" :style="{  color: 'blue' }" />
         </div>
-        <div class="container">
-          <div class="showtitle">
-
+        </div>
+      <div class="contain" id="contain">
+        
+        <Nav />
+        <div class="background">
+          <canvas id="canvas" width="2000" height="635"></canvas>
+          <!-- svg波浪 -->
+          <div class="svg-wave">
+            <svg
+              class="waves"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 24 150 28"
+              preserveAspectRatio="none"
+              shape-rendering="auto"
+            >
+              <defs>
+                <path
+                  id="gentle-wave"
+                  d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                />
+              </defs>
+              <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(229, 226, 226,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(229, 226, 226,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(229, 226, 226,0.7)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(229, 226, 226,1)" />
+              </g>
+            </svg>
           </div>
-          <div class="show">
-              
-            </div>
         </div>
-        <BackTop />
-        <Footer class="footer" />
+
+        <div class="waterfall">
+          <div class="title">
+            <p>寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷</p>
+          </div>
+          <div class="container">
+            <div class="showtitle">
+              <font-awesome-icon class="showtitle-icon" :icon="['fas','camera-retro']" />
+              <p class="showtext">photos of the Milky Way from Pexels</p>
+            </div>
+            <div class="show">
+              <waterfall :col="col" :data="waterfallData">
+                <template>
+                  <div class="cell-item" v-for="(item,index) in waterfallData" :key="index">
+                    <img @click="showDialog($event)" :id="index" class="item" v-lazy="item"  alt />
+                  </div>
+                </template>
+              </waterfall>
+            </div>
+          </div>
+          <Footer class="footer" />
+        </div>
       </div>
-    </div>
-    
   </div>
 </template>
 
@@ -61,14 +81,93 @@ import Footer from "../components/footer";
 
 export default {
   data() {
-    return {};
+    return {
+      col: 4,
+      dialog: false,
+      imageId: 0
+    };
   },
   components: {
     Nav,
     BackTop,
     Footer
   },
-  methods: {},
+  computed: {
+    waterfallData() {
+      let arrImg = [
+        // 瀑布流放入数据
+        require("../assets/resource/star/1.jpg"),
+        require("../assets/resource/star/2.jpg"),
+        require("../assets/resource/star/3.jpg"),
+        require("../assets/resource/star/4.jpg"),
+        require("../assets/resource/star/5.jpg"),
+        require("../assets/resource/star/6.jpg"),
+        require("../assets/resource/star/7.jpg"),
+        require("../assets/resource/star/8.jpg"),
+        require("../assets/resource/star/9.jpg"),
+        require("../assets/resource/star/10.jpg"),
+        require("../assets/resource/star/11.jpg"),
+        require("../assets/resource/star/12.jpg"),
+        require("../assets/resource/star/13.jpg"),
+        require("../assets/resource/star/14.jpg"),
+        require("../assets/resource/star/15.jpg"),
+        require("../assets/resource/star/16.jpg"),
+        require("../assets/resource/star/17.jpg"),
+        require("../assets/resource/star/18.jpg"),
+        require("../assets/resource/star/19.jpg"),
+        require("../assets/resource/star/20.jpg")
+      ];
+      return arrImg;
+    }
+  },
+  methods: {
+    // 动态创建DOM元素展示图片细节
+    showDialog($event) {
+      this.dialog = true;
+      // console.log($event.path[0].id);
+      this.imageId =  parseInt($event.path[0].id) + parseInt(1)
+      // console.log(this.imageId)
+      var dialogWindow = document.createElement("img");
+      dialogWindow.setAttribute("id", "img");
+      var parent = document.getElementById("dialog");
+      parent.appendChild(dialogWindow);
+      var img = document.getElementById("img");
+      img.setAttribute("src", `http://localhost:3000/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      img.style.width = "28vw";
+      img.style.height = "100%";
+
+      // 添加背景灰度模糊效果
+      var backgroundWindow = document.getElementById('contain')
+      backgroundWindow.style.filter = "grayscale(20%) blur(5px)" 
+    },
+    close(){
+      this.dialog = false;
+      var backgroundWindow = document.getElementById('contain')
+      backgroundWindow.style.filter = "grayscale(0%) blur(0)"
+    },
+    turnLeft(){
+      this.imageId = this.imageId - 1
+      var img = document.getElementById("img");
+      img.setAttribute("src", `http://localhost:3000/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      // var imageUrl = img.getAttribute('src')
+      // imageUrl.split(imageUrl.length-1)
+      
+    },
+    turnRight(){
+      this.imageId = this.imageId + 1
+      var img = document.getElementById("img");
+      img.setAttribute("src", `http://localhost:3000/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+    },
+    shareWechat(){
+      console.warn('接口开发中')     
+    },
+    shareWeibo(){
+      console.warn('接口开发中')     
+    },
+    shareQQ(){
+      console.warn('接口开发中')     
+    }
+  },
   mounted() {
     // 坐标
     class Crood {
@@ -242,10 +341,81 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.main{
+.main {
   background-color: rgb(229, 226, 226);
   overflow: hidden;
 }
+ .dialog {
+
+    padding: 70px 60px;
+    background-color: #fff;
+    text-align: center;
+
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    .dialog-control{
+      position: absolute;
+      width: 100%;
+      height: 60%;
+      margin-left: -60px;
+      margin-top: -70px;
+      .close{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        outline: none;
+      }
+      .change-left{
+        position: absolute;
+        font-size: 45px;
+        bottom: 10%;
+        left: 10px;
+        cursor: pointer;
+        outline: none;
+
+      }
+      .change-right{
+        position: absolute;
+        font-size: 45px;
+        bottom: 10%;
+        right: 10px;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+    .dialog-share{
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width:250px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      font-size: 28px;
+      display: flex;
+      .dialog-share-text{
+        font-size: 16px;
+        position: absolute;
+        margin-left: -60px;
+        color: rgb(163, 163, 163);
+      }
+      .dialog-share-item{
+        flex: 1;
+        outline: none;
+        cursor: pointer;
+        padding-top: 3px;
+      }
+    }
+  }
 .contain {
   .background {
     width: 100%;
@@ -258,41 +428,53 @@ export default {
       position: absolute;
       z-index: 1;
     }
-    .bc-title {
-      margin: 25vh auto;
-      color: rgb(255, 255, 255);
-      font-family: "SnellRoundhand";
-      width: 100%;
-      text-align: center;
-      font-size: 45px;
-      opacity: 0.8;
-      text-shadow: 2px 0 2px rgb(255, 255, 255);
-    }
   }
   .waterfall {
     width: 100%;
     background-color: rgb(229, 226, 226);
-    .title{
+    .title {
       width: 800px;
       line-height: 60px;
       letter-spacing: 3px;
-      margin: 20px auto;
+      margin: 30px auto;
       height: 60px;
       border-radius: 20px;
       text-align: center;
       border: 1px dashed #fff;
-      p{
+      p {
         font-size: 20px;
         color: #fff;
       }
     }
-    .container{
-      margin-top: 70px;
-      .showtitle{
+    .container {
+      margin-top: 60px;
+      .showtitle {
         width: 100%;
         background-color: #fff;
         height: 50px;
         box-shadow: 0 0 10px rgb(182, 182, 182);
+        text-align: center;
+        line-height: 50px;
+        color: #777;
+        .showtitle-icon {
+          display: inline-block;
+        }
+        .showtext {
+          display: inline-block;
+        }
+      }
+      .show {
+        width: 100%;
+        display: flex;
+        .cell-item {
+          flex: 1;
+          margin: 15px 10px;
+          overflow: hidden;
+          cursor: pointer;
+          img {
+            width: 100%;
+          }
+        }
       }
     }
   }
@@ -300,5 +482,4 @@ export default {
     margin-top: 150px;
   }
 }
-
 </style>

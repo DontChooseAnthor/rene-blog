@@ -13,7 +13,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {href:'http://cdn.repository.webfont.com/webfonts/nomal/138360/46931/5ec1096af629d8081cc5e783.css' ,rel:'stylesheet' ,type:'text/css'}
+      // { rel: 'stylesheet', type: 'text/css', href: 'http://cdn.repository.webfont.com/webfonts/nomal/138360/47808/5ec23657f629d8081cc5e7a7.css' }
     ]
   },
   /*
