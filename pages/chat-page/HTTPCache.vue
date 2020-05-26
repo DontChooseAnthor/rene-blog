@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_夕阳.jpg')">
         <p class="title1">HTTP缓存ZooTeam搬运</p>
         <p class="title2">踩着前人的脚印稳扎稳打的跟上大部队~</p>
       </div>
@@ -12,7 +12,7 @@
         <div class="section-container-short">
            HTTP 缓存分为 2 种，一种是强缓存，另一种是协商缓存。主要作用是可以加快资源获取速度，提升用户体验，减少网络传输，缓解服务端的压力。这是缓存运作的一个整体流程图：
           <img
-            src="../public/Artical/http/缓存原理.jpg"
+            src="../../public/Artical/http/缓存原理.jpg"
             alt
           />
         </div>
@@ -40,22 +40,22 @@
               <br />本地通过 express 起一个服务来验证强缓存的 3 个属性，代码如下：
               <div v-html="http1"></div>第一次加载，页面会向服务器请求数据，并在 Response Header 中添加 Cache-Control ，过期时间为 10 秒。
               <img
-                src="../public/Artical/http/pragma1.webp"
+                src="../../public/Artical/http/pragma1.webp"
                 alt
               />
               第二次加载，Date 头属性未更新，可以看到浏览器直接使用了强缓存，实际没有发送请求。
               <img
-                src="../public/Artical/http/pragma2.webp"
+                src="../../public/Artical/http/pragma2.webp"
                 alt
               />
               过了 10 秒的超时时间之后，再次请求资源：
               <img
-                src="../public/Artical/http/pragma3.webp"
+                src="../../public/Artical/http/pragma3.webp"
                 alt
               />
               当 Pragma 和 Cache-Control 同时存在的时候，Pragma 的优先级高于 Cache-Control。
               <img
-                src="../public/Artical/http/pragma4.webp"
+                src="../../public/Artical/http/pragma4.webp"
                 alt
               />
             </dd>
@@ -76,21 +76,21 @@
               Last-Modified/If-Modified-Since 的值代表的是文件的最后修改时间，第一次请求服务端会把资源的最后修改时间放到 Last-Modified 响应头中，第二次发起请求的时候，请求头会带上上一次响应头中的 Last-Modified 的时间，并放到 If-Modified-Since 请求头属性中，服务端根据文件最后一次修改时间和 If-Modified-Since 的值进行比较，如果相等，返回 304 ，并加载浏览器缓存。
               <br />本地通过 express 起一个服务来验证协商缓存，代码如下：
               <div v-html="http2"></div>第一次请求资源:
-              <img src="../public/Artical/http/modified1.webp" alt />
+              <img src="../../public/Artical/http/modified1.webp" alt />
               第二次请求资源，服务端根据请求头中的 If-Modified-Since 和 If-None-Match 验证文件是否修改。
               <img
-                src="../public/Artical/http/modified2.webp"
+                src="../../public/Artical/http/modified2.webp"
                 alt
               />
             </dd>我们再来验证一下 ETag 在强校验的情况下，只增加一行空格，hash 值如何变化，在代码中，我采用的是对文件进行 MD5 加密来计算其 hash 值。
             <br />注：只是为了演示用，实际计算不是通过 MD5 加密的，Apache 默认通过 FileEtag 中 FileEtag INode Mtime Size 的配置自动生成 ETag，用户可以通过自定义的方式来修改文件生成 ETag 的方式。
             <br />为了保证 lastModified 不影响缓存，我把通过 Last-Modified/If-Modified-Since 请求头删除了，源码如下：
             <div v-html="http3"></div>第一次和第二次请求如下：
-            <img src="../public/Artical/http/modified3.webp" alt />
-            <img src="../public/Artical/http/modified4.webp" alt />
+            <img src="../../public/Artical/http/modified3.webp" alt />
+            <img src="../../public/Artical/http/modified4.webp" alt />
             然后我修改了 test.js ，增加一个空格后再删除一个空格，保持文件内容不变，但文件的修改时间改变，发起第三次请求，由于我生成 ETag 的方式是通过对文件内容进行 MD5 加密生成，所以虽然修改时间变化了，但请求依然返回了 304 ，读取浏览器缓存。
             <img
-              src="../public/Artical/http/modified5.webp"
+              src="../../public/Artical/http/modified5.webp"
               alt
             />
             <dl>
@@ -106,11 +106,11 @@
 </template>
 
 <script>
-import reArticle from "../components/article";
+import reArticle from "../../components/article";
 import "highlight.js/styles/monokai-sublime.css";
-import http1 from "../public/Artical/http/http1.md";
-import http2 from "../public/Artical/http/http2.md";
-import http3 from "../public/Artical/http/http3.md";
+import http1 from "../../public/Artical/http/http1.md";
+import http2 from "../../public/Artical/http/http2.md";
+import http3 from "../../public/Artical/http/http3.md";
 
 export default {
   data() {
@@ -135,7 +135,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.header {
-  background-image: url("../assets/resource/12.jpg");
-}
+
 </style>

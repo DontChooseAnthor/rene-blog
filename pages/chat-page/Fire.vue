@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_远眺.jpg')">
         <p class="title1">火法循环</p>
         <p class="title2">结合NGA老哥经验后的自闭思考~</p>
       </div>
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 export default {
   data () {
     return {
@@ -64,7 +64,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url("../assets/resource/9.jpg");
-  }
+
 </style>

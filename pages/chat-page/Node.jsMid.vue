@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_门关.jpg')">
         <p class="title1">NodeJS中间件</p>
         <p class="title2">洋葱模型有点意思~</p>
       </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="section-container-short">
           中间件模式中，最基础的组成部分就是<b>中间件管理器</b>，用它来组织和执行中间件的函数，如下图所示：
-          <img src="../public/Artical/node mid/node1.webp" alt="">
+          <img src="../../public/Artical/node mid/node1.webp" alt="">
           要实现中间件模式，最重要的实现细节是：
           <ul>
             <li>可以通过调用use()函数来注册新的中间件，通常，新的中间件只能被添加到高压包带的末端，但不是严格要求这么做</li>
@@ -55,7 +55,7 @@
           <font-awesome-icon class="section-icon" :icon="['fas','cannabis']" />
         </div>
         <div class="section-container-short">
-          <img src="../public/Artical/express-koa/o_onion.png" alt="">
+          <img src="../../public/Artical/express-koa/o_onion.png" alt="">
           Koa中间件是通过async await实现的，中间件执行顺序即是上图这个洋葱模型
           <div v-html="koa1"></div>
         </div>
@@ -65,11 +65,11 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 import 'highlight.js/styles/monokai-sublime.css';
-import express1 from '../public/Artical/express-koa/express1.md'
-import express2 from '../public/Artical/express-koa/express2.md'
-import koa1 from '../public/Artical/express-koa/koa1.md'
+import express1 from '../../public/Artical/express-koa/express1.md'
+import express2 from '../../public/Artical/express-koa/express2.md'
+import koa1 from '../../public/Artical/express-koa/koa1.md'
 export default {
   data () {
     return {
@@ -95,7 +95,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url("../assets/resource/11.jpg");
-  }
+
 </style>

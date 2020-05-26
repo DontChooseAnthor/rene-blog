@@ -1,7 +1,7 @@
 <template>
   <div>
       <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_古迹.jpg')">
         <p class="title1">IndexedDB</p>
         <p class="title2">浏览器也有数据库？</p>
       </div>
@@ -110,9 +110,9 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 import 'highlight.js/styles/monokai-sublime.css';
-import IndexedDB from '../public/Artical/IndexedDB/indexedDB.md'
+import IndexedDB from '../../public/Artical/IndexedDB/indexedDB.md'
 export default {
   data () {
     return {
@@ -132,7 +132,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url('../assets/resource/6.jpg');
-  }
+
 </style>

@@ -21,7 +21,7 @@
       <div class="contain" id="contain">
         
         <Nav />
-        <div class="background">
+        <div class="background" v-lazy:background-image="backgroundImage">
           <canvas id="canvas" width="2000" height="635"></canvas>
           <!-- svg波浪 -->
           <div class="svg-wave">
@@ -62,7 +62,7 @@
               <waterfall :col="col" :data="waterfallData">
                 <template>
                   <div class="cell-item" v-for="(item,index) in waterfallData" :key="index">
-                    <img @click="showDialog($event)" :id="index" class="item" v-lazy="item"  alt />
+                    <img @click="showDialog($event)" :id="index" class="item" :lazy-src="item"  alt />
                   </div>
                 </template>
               </waterfall>
@@ -86,6 +86,7 @@ import Music from '../components/music'
 export default {
   data() {
     return {
+      backgroundImage:require('../assets/resource/封面_银河.jpg'),
       col: 4,
       dialog: false,
       imageId: 0
@@ -102,26 +103,26 @@ export default {
     waterfallData() {
       let arrImg = [
         // 瀑布流放入数据
-        require("../assets/resource/star/1.jpg"),
-        require("../assets/resource/star/2.jpg"),
-        require("../assets/resource/star/3.jpg"),
-        require("../assets/resource/star/4.jpg"),
-        require("../assets/resource/star/5.jpg"),
-        require("../assets/resource/star/6.jpg"),
-        require("../assets/resource/star/7.jpg"),
-        require("../assets/resource/star/8.jpg"),
-        require("../assets/resource/star/9.jpg"),
-        require("../assets/resource/star/10.jpg"),
-        require("../assets/resource/star/11.jpg"),
-        require("../assets/resource/star/12.jpg"),
-        require("../assets/resource/star/13.jpg"),
-        require("../assets/resource/star/14.jpg"),
-        require("../assets/resource/star/15.jpg"),
-        require("../assets/resource/star/16.jpg"),
-        require("../assets/resource/star/17.jpg"),
-        require("../assets/resource/star/18.jpg"),
-        require("../assets/resource/star/19.jpg"),
-        require("../assets/resource/star/20.jpg")
+        require("../assets/resource/star/星空1.jpg"),
+        require("../assets/resource/star/星空2.jpg"),
+        require("../assets/resource/star/星空3.jpg"),
+        require("../assets/resource/star/星空4.jpg"),
+        require("../assets/resource/star/星空5.jpg"),
+        require("../assets/resource/star/星空6.jpg"),
+        require("../assets/resource/star/星空7.jpg"),
+        require("../assets/resource/star/星空8.jpg"),
+        require("../assets/resource/star/星空9.jpg"),
+        require("../assets/resource/star/星空10.jpg"),
+        require("../assets/resource/star/星空11.jpg"),
+        require("../assets/resource/star/星空12.jpg"),
+        require("../assets/resource/star/星空13.jpg"),
+        require("../assets/resource/star/星空14.jpg"),
+        require("../assets/resource/star/星空15.jpg"),
+        require("../assets/resource/star/星空16.jpg"),
+        require("../assets/resource/star/星空17.jpg"),
+        require("../assets/resource/star/星空18.jpg"),
+        require("../assets/resource/star/星空19.jpg"),
+        require("../assets/resource/star/星空20.jpg")
       ];
       return arrImg;
     }
@@ -138,7 +139,7 @@ export default {
       var parent = document.getElementById("dialog");
       parent.appendChild(dialogWindow);
       var img = document.getElementById("img");
-      img.setAttribute("src", `http://localhost:3000/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      img.setAttribute("src", `http://localhost:3002/_nuxt/assets/resource/star/${this.imageId}.jpg`);
       img.style.width = "28vw";
       img.style.height = "100%";
 
@@ -154,7 +155,7 @@ export default {
     turnLeft(){
       this.imageId = this.imageId - 1
       var img = document.getElementById("img");
-      img.setAttribute("src", `http://localhost:3000/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      img.setAttribute("src", `http://localhost:3002/_nuxt/assets/resource/star/${this.imageId}.jpg`);
       // var imageUrl = img.getAttribute('src')
       // imageUrl.split(imageUrl.length-1)
       
@@ -162,7 +163,7 @@ export default {
     turnRight(){
       this.imageId = this.imageId + 1
       var img = document.getElementById("img");
-      img.setAttribute("src", `http://localhost:3000/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      img.setAttribute("src", `http://localhost:3002/_nuxt/assets/resource/star/${this.imageId}.jpg`);
     },
     shareWechat(){
       console.warn('接口开发中')     
@@ -425,10 +426,11 @@ export default {
 .contain {
   .background {
     width: 100%;
-    height: 100vh;
+    height: 95vh;
     overflow: hidden;
     position: relative;
-    background: url("../assets/resource/18.jpg") no-repeat;
+    // background: url("../assets/resource/18.jpg");
+    background-repeat: no-repeat;
     background-size: 100%;
     canvas {
       position: absolute;

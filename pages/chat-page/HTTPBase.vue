@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_车站.jpg')">
         <p class="title1">HTTP基本原理</p>
         <p class="title2">在浏览器中敲入URL到获取网页内容之间发生了什么~</p>
       </div>
@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 export default {
   data () {
     return {
@@ -125,7 +125,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url("../assets/resource/10.jpg");
-  }
+
 </style>

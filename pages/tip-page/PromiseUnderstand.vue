@@ -2,7 +2,7 @@
   <div class="promise-resource">
     <Nav />
     <div class="container">
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/home/tipsImage/封面_城池.jpg')">
         <p class="title1">Promise的一些理解</p>
         <p class="title2">无论何时，ES6的基础永远是最重要的~</p>
       </div>
@@ -132,21 +132,21 @@
 </template>
 
 <script>
-import Nav from "../components/nav";
-import BackTop from "../components/backtop";
-import Footer from "../components/footer";
+import Nav from "../../components/nav";
+import BackTop from "../../components/backtop";
+import Footer from "../../components/footer";
 
 // 引入highlight样式
 import 'highlight.js/styles/monokai-sublime.css';
-import PromiseObj from '../public/Artical/Promise/Promise对象.md'
-import PromiseNew from '../public/Artical/Promise/Promise实例.md'
-import thenObj from '../public/Artical/Promise/then方法.md'
-import catchObj from '../public/Artical/Promise/catch方法.md'
-import finallyObj from '../public/Artical/Promise/finally.md'
-import allObj from '../public/Artical/Promise/all.md'
-import raceObj from '../public/Artical/Promise/race.md'
-import resolveObj from '../public/Artical/Promise/resolve.md'
-import rejectObj from '../public/Artical/Promise/reject.md'
+import PromiseObj from '../../public/Artical/Promise/Promise对象.md'
+import PromiseNew from '../../public/Artical/Promise/Promise实例.md'
+import thenObj from '../../public/Artical/Promise/then方法.md'
+import catchObj from '../../public/Artical/Promise/catch方法.md'
+import finallyObj from '../../public/Artical/Promise/finally.md'
+import allObj from '../../public/Artical/Promise/all.md'
+import raceObj from '../../public/Artical/Promise/race.md'
+import resolveObj from '../../public/Artical/Promise/resolve.md'
+import rejectObj from '../../public/Artical/Promise/reject.md'
 
 
 export default {
@@ -207,7 +207,6 @@ export default {
     height: 50vh;
     overflow: hidden;
     position: relative;
-    background-image: url("../assets/resource/1.jpg");
     background-size: 100% auto;
     animation: showHeader 1s ease;
     .title1 {

@@ -1,7 +1,7 @@
 <template>
   <div>
       <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_森林.jpg')">
         <p class="title1">Nuxt.js</p>
         <p class="title2">传说中的服务器端渲染(SSR)</p>
       </div>
@@ -48,7 +48,7 @@
         </div>
         <div class="section-container-short">
           Nuxt.js是基于Vue.js的，所以它也有类似生命周期的概念，不过与Vue的生命周期有一定的不同。Vue生命周期中的mount、update和destroy都是作用在客户端页面中的，所以在Nuxt服务器端渲染过程中是不存在的。这里介绍一下Nuxt特有的流程周期,先上图
-          <img src="../public/Artical/Nuxt/nuxt-schema.svg" alt="">
+          <img src="../../public/Artical/Nuxt/nuxt-schema.svg" alt="">
           <dl>
             <dt>nuxtServerInit:</dt>
             <dd>当在Nuxt中使用Vuex之后，即可在状态树中使用这个方法。Nuxt.js在调用它的时候会将页面的上下文对象作为第二参数传递给它,也就是实现了服务端操作Vuex的状态树</dd>
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 export default {
   data () {
     return {
@@ -89,9 +89,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url('../assets/resource/7.jpg');
-  }
+
   .article{
     .begin{
       a{

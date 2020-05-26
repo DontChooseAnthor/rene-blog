@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_橱窗.jpg')">
         <p class="title1">Axios</p>
         <p class="title2">不惜抛弃vue-resource，获得了Vue作者大大力推荐~</p>
       </div>
@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 import 'highlight.js/styles/monokai-sublime.css';
-import axios1 from '../public/Artical/axios/axios1.md'
-import axios2 from '../public/Artical/axios/axios2.md'
-import axios3 from '../public/Artical/axios/axios3.md'
-import axios4 from '../public/Artical/axios/axios4.md'
-import axios5 from '../public/Artical/axios/axios5.md'
+import axios1 from '../../public/Artical/axios/axios1.md'
+import axios2 from '../../public/Artical/axios/axios2.md'
+import axios3 from '../../public/Artical/axios/axios3.md'
+import axios4 from '../../public/Artical/axios/axios4.md'
+import axios5 from '../../public/Artical/axios/axios5.md'
 
 
 export default {
@@ -79,7 +79,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url("../assets/resource/8.jpg");
-  }
+
 </style>

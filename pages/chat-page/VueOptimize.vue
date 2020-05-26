@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_鸟居.jpg')">
         <p class="title1">Vue的九种优化方法</p>
         <p class="title2">来自于Guillaume Chau大神在19年开发大会上的总结~</p>
       </div>
@@ -57,17 +57,17 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 import 'highlight.js/styles/monokai-sublime.css';
-import vue1 from '../public/Artical/vue-better/vue1.md'
-import vue2 from '../public/Artical/vue-better/vue2.md'
-import vue3 from '../public/Artical/vue-better/vue3.md'
-import vue4 from '../public/Artical/vue-better/vue4.md'
-import vue5 from '../public/Artical/vue-better/vue5.md'
-import vue6 from '../public/Artical/vue-better/vue6.md'
-import vue7 from '../public/Artical/vue-better/vue7.md'
-import vue8 from '../public/Artical/vue-better/vue8.md'
-import vue9 from '../public/Artical/vue-better/vue9.md'
+import vue1 from '../../public/Artical/vue-better/vue1.md'
+import vue2 from '../../public/Artical/vue-better/vue2.md'
+import vue3 from '../../public/Artical/vue-better/vue3.md'
+import vue4 from '../../public/Artical/vue-better/vue4.md'
+import vue5 from '../../public/Artical/vue-better/vue5.md'
+import vue6 from '../../public/Artical/vue-better/vue6.md'
+import vue7 from '../../public/Artical/vue-better/vue7.md'
+import vue8 from '../../public/Artical/vue-better/vue8.md'
+import vue9 from '../../public/Artical/vue-better/vue9.md'
 
 export default {
   data () {
@@ -112,7 +112,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url("../assets/resource/13.jpg");
-  }
+
 </style>

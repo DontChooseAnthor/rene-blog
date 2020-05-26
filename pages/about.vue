@@ -1,8 +1,8 @@
 <template>
   <div class="main">
     <Nav />
-    <div class="background" id="background">
-      <img class="road" src="../assets/about/road.png" alt="">
+    <div class="background" v-lazy:background-image="require('../assets/about/视差_重山.jpg')" id="background">
+      <img class="road" v-lazy="road" alt="">
       <p class="title">About</p> 
    </div>
     <div class="during"></div>
@@ -40,7 +40,7 @@ import Music from '../components/music'
 export default {
   data () {
     return {
-     
+      road:require('../assets/about/视差_公路.png')
     }
   },
   components:	{
@@ -80,7 +80,6 @@ export default {
   height: 100vh;
   top: 0;
   left: 0;
-  background-image: url("../assets/about/black-and-white.jpg");
   margin: auto;
   overflow: hidden;
   background-position:center;

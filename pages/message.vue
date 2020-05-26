@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-       <div class="header">
+       <div class="header" v-lazy:background-image="backgroundImage">
         <p class="title1">留言板</p>
         <p class="title2">留下足迹，证明你曾经来过这里~</p>
       </div>
@@ -48,6 +48,7 @@ import Music from '../components/music'
 export default {
   data() {
     return {
+      backgroundImage:require('../assets/resource/封面_河市.jpg'),
       markdownOption:{
         bold:true, //粗体
         underline: true, // 下划线
@@ -66,6 +67,7 @@ export default {
       handbook:'留下您的足迹',
       comment: '',
       commentResult: false
+
     };
   },
   computed: {
@@ -87,9 +89,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.header{
-    background-image: url("../assets/resource/15.jpg");
-  }
+// .header{
+//     background-image: url("../assets/resource/15.jpg");
+//   }
 .article{
   .verse{
     width: 70%;

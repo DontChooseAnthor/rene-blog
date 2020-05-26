@@ -67,7 +67,8 @@
         <!-- Nav component -->
         <Nav v-if="navShow" />
 
-        <div :class="bg" v-lazy id="headerBg">
+        <div class="bg" v-lazy:background-image="backgroundImage" 
+        :key="backgroundImage" id="headerBg">
           <!-- title -->
           <figure id="centerbg" class="centerbg">
             <div class="focusinfo">
@@ -207,27 +208,27 @@
             <font-awesome-icon class="course-icon" :icon="['fas','crow']" />
             <h1>Share with you</h1>
             <div class="course-all-content">
-              <nuxt-link to="/home-resource1">
+              <nuxt-link to="/tip-page/PromiseUnderstand">
                 <div class="course-icon-content">
-                  <img class="course-img" src="../assets/home/tipsImage/tip1.jpg" alt />
+                  <img class="course-img" v-lazy="tip1" alt />
                   <div class="course-filter">
                     <span class="course-content-a">Promise</span>
                     <span class="course-content-b">Promise是什么</span>
                   </div>
                 </div>
               </nuxt-link>
-              <nuxt-link to="/home-resource2">
+              <nuxt-link to="/tip-page/VueRes">
                 <div class="course-icon-content">
-                  <img class="course-img" src="../assets/home/tipsImage/tip2.jpg" alt />
+                  <img class="course-img" v-lazy="tip2" alt />
                   <div class="course-filter">
                     <span class="course-content-a">Vue</span>
                     <span class="course-content-b">拆开Vue看看里面有什么</span>
                   </div>
                 </div>
               </nuxt-link>
-              <nuxt-link to="/home-resource3">
+              <nuxt-link to="/tip-page/HybridApp">
                 <div class="course-icon-content">
-                  <img class="course-img" src="../assets/home/tipsImage/tip3.jpg" alt />
+                  <img class="course-img" v-lazy="tip3" alt />
                   <div class="course-filter">
                     <span class="course-content-a">Hybird App</span>
                     <span class="course-content-b">接触混合开发模式</span>
@@ -240,9 +241,9 @@
             <font-awesome-icon class="share-icon" :icon="['fas','frog']" />
             <h1>Something interesting</h1>
             <div class="share-contain">
-              <nuxt-link class="share-page" to="chat-page1">
+              <nuxt-link class="share-page" to="chat-page/Flex&Grid">
                 <pageShareLeft>
-                  <img slot="image" src="../assets/resource/4.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[0]" alt />
                   <h2 slot="title">Flex&amp;Grid</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -250,9 +251,9 @@
                   </p>
                 </pageShareLeft>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page2">
+              <nuxt-link class="share-page" to="chat-page/IndexedDB">
                 <pageShareRight>
-                  <img slot="image" src="../assets/resource/6.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[1]" alt />
                   <h2 slot="title">IndexedDB</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -261,9 +262,9 @@
                   </p>
                 </pageShareRight>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page3">
+              <nuxt-link class="share-page" to="chat-page/Nuxt.js">
                 <pageShareLeft>
-                  <img slot="image" src="../assets/resource/7.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[2]" alt />
                   <h2 slot="title">Nuxt.js</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -271,9 +272,9 @@
                   </p>
                 </pageShareLeft>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page4">
+              <nuxt-link class="share-page" to="chat-page/Axios">
                 <pageShareRight>
-                  <img slot="image" src="../assets/resource/8.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[3]" alt />
                   <h2 slot="title">Axios</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -281,9 +282,9 @@
                   </p>
                 </pageShareRight>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page5">
+              <nuxt-link class="share-page" to="chat-page/Fire">
                 <pageShareLeft>
-                  <img slot="image" src="../assets/resource/9.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[4]" alt />
                   <h2 slot="title">火法循环</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -291,9 +292,9 @@
                   </p>
                 </pageShareLeft>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page6">
+              <nuxt-link class="share-page" to="chat-page/HTTPBase">
                 <pageShareRight>
-                  <img slot="image" src="../assets/resource/10.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[5]" alt />
                   <h2 slot="title">HTTP基本原理</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -301,9 +302,9 @@
                   </p>
                 </pageShareRight>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page7">
+              <nuxt-link class="share-page" to="chat-page/Node.jsMid">
                 <pageShareLeft>
-                  <img slot="image" src="../assets/resource/11.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[6]" alt />
                   <h2 slot="title">NodeJS中间件</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -314,9 +315,9 @@
                   </p>
                 </pageShareLeft>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page8">
+              <nuxt-link class="share-page" to="chat-page/HTTPCache">
                 <pageShareRight>
-                  <img slot="image" src="../assets/resource/12.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[7]" alt />
                   <h2 slot="title">HTTP缓存ZooTeam搬运</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -324,9 +325,9 @@
                   </p>
                 </pageShareRight>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page9">
+              <nuxt-link class="share-page" to="chat-page/VueOptimize">
                 <pageShareLeft>
-                  <img slot="image" src="../assets/resource/13.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[8]" alt />
                   <h2 slot="title">Vue的九种优化方法</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -334,9 +335,9 @@
                   </p>
                 </pageShareLeft>
               </nuxt-link>
-              <nuxt-link class="share-page" to="chat-page10">
+              <nuxt-link class="share-page" to="chat-page/WebpackTheory">
                 <pageShareRight>
-                  <img slot="image" src="../assets/resource/14.jpg" alt />
+                  <img slot="image" v-lazy="pageShare[9]" alt />
                   <h2 slot="title">webpack原理</h2>
                   <p slot="list">杂谈</p>
                   <p slot="article">
@@ -366,8 +367,25 @@ export default {
   name: "Home",
   data() {
     return {
-      bg: "",
-      navShow: false
+      // bg: "",
+      num: 1,
+      navShow: false,
+      backgroundImage:'',
+      tip1:require('../assets/home/tipsImage/封面_城池.jpg'),
+      tip2:require('../assets/home/tipsImage/封面_山谷.jpg'),
+      tip3:require('../assets/home/tipsImage/封面_幽道.jpg'),
+      pageShare:[
+        require("../assets/resource/封面_暗流.jpg"),
+        require("../assets/resource/封面_古迹.jpg"),
+        require("../assets/resource/封面_森林.jpg"),
+        require("../assets/resource/封面_橱窗.jpg"),
+        require("../assets/resource/封面_远眺.jpg"),
+        require("../assets/resource/封面_车站.jpg"),
+        require("../assets/resource/封面_门关.jpg"),
+        require("../assets/resource/封面_夕阳.jpg"),
+        require("../assets/resource/封面_鸟居.jpg"),
+        require("../assets/resource/封面_瀑布.jpg"),
+      ]
     };
   },
   methods: {
@@ -405,9 +423,22 @@ export default {
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
     // 进入时改变bcimg
-    let num = Math.floor(Math.random() * 7 + 1);
-    // this.$refs.backGroundImage.style.backGround = url(`../assets/theme/${num}.jpg`)
-    this.bg = `bg${num}`;
+    // let num = Math.floor(Math.random() * 7 + 1);
+    // // this.$refs.backGroundImage.style.backGround = url(`../assets/theme/${num}.jpg`)
+    // this.bg = `bg${num}`;
+    // 获取图片组成数组
+    let background = [
+      require("../assets/home/backgroundImage/壁纸_虫柱.jpg"),
+      require("../assets/home/backgroundImage/壁纸_餐厅少女.jpg"),
+      require("../assets/home/backgroundImage/壁纸_鬼刀.jpg"),
+      require("../assets/home/backgroundImage/壁纸_桔梗.jpg"),
+      require("../assets/home/backgroundImage/壁纸_夕阳少女.jpg"),
+      require("../assets/home/backgroundImage/壁纸_JK撑伞.jpg"),
+      require("../assets/home/backgroundImage/壁纸_学校少女.jpg"),
+    ]
+    this.num = Math.floor(Math.random()*7+1)
+    this.backgroundImage = background[this.num]
+    
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -527,127 +558,145 @@ export default {
     background: #ffffff;
   }
 
+  .bg {
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .bg::before {
+    content: "";
+    display: inline-block;
+    height: inherit;
+    width: inherit;
+    background-image: repeating-linear-gradient(
+      to top,
+      rgba(100, 97, 97, 0.2),
+      rgba(204, 204, 204, 0.3) 2px
+    );
+  }
   // 笨办法修改background
-  .bg1 {
-    height: 100vh;
-    width: 100%;
-    background: url("../assets/home/backgroundImage/1.jpg") no-repeat center;
-    background-size: cover;
-  }
-  .bg2 {
-    height: 100vh;
-    width: 100%;
-    background: url("../assets/home/backgroundImage/2.jpg") no-repeat center;
-    background-size: cover;
-  }
-  .bg3 {
-    height: 100vh;
-    width: 100%;
-    background: url("../assets/home/backgroundImage/3.jpg") no-repeat center;
-    background-size: cover;
-  }
-  .bg4 {
-    height: 100vh;
-    width: 100%;
-    background: url("../assets/home/backgroundImage/4.jpg") no-repeat center;
-    background-size: cover;
-  }
-  .bg5 {
-    height: 100vh;
-    width: 100%;
-    background: url("../assets/home/backgroundImage/5.jpg") no-repeat center;
-    background-size: cover;
-  }
-  .bg6 {
-    height: 100vh;
-    width: 100%;
-    background: url("../assets/home/backgroundImage/6.jpg") no-repeat center;
-    background-size: cover;
-  }
-  .bg7 {
-    height: 100vh;
-    width: 100%;
-    background: url("../assets/home/backgroundImage/7.jpg") no-repeat center;
-    background-size: cover;
-  }
+  // .bg1 {
+  //   height: 100vh;
+  //   width: 100%;
+  //   background: url("../assets/home/backgroundImage/1.jpg") no-repeat center;
+  //   background-size: cover;
+  // }
+  // .bg2 {
+  //   height: 100vh;
+  //   width: 100%;
+  //   background: url("../assets/home/backgroundImage/2.jpg") no-repeat center;
+  //   background-size: cover;
+  // }
+  // .bg3 {
+  //   height: 100vh;
+  //   width: 100%;
+  //   background: url("../assets/home/backgroundImage/3.jpg") no-repeat center;
+  //   background-size: cover;
+  // }
+  // .bg4 {
+  //   height: 100vh;
+  //   width: 100%;
+  //   background: url("../assets/home/backgroundImage/4.jpg") no-repeat center;
+  //   background-size: cover;
+  // }
+  // .bg5 {
+  //   height: 100vh;
+  //   width: 100%;
+  //   background: url("../assets/home/backgroundImage/5.jpg") no-repeat center;
+  //   background-size: cover;
+  // }
+  // .bg6 {
+  //   height: 100vh;
+  //   width: 100%;
+  //   background: url("../assets/home/backgroundImage/6.jpg") no-repeat center;
+  //   background-size: cover;
+  // }
+  // .bg7 {
+  //   height: 100vh;
+  //   width: 100%;
+  //   background: url("../assets/home/backgroundImage/7.jpg") no-repeat center;
+  //   background-size: cover;
+  // }
 
-  .bg1::before {
-    content: "";
-    display: inline-block;
-    height: inherit;
-    width: inherit;
-    background-image: repeating-linear-gradient(
-      to top,
-      rgba(100, 97, 97, 0.2),
-      rgba(204, 204, 204, 0.3) 2px
-    );
-  }
-  .bg2::before {
-    content: "";
-    display: inline-block;
-    height: inherit;
-    width: inherit;
-    background-image: repeating-linear-gradient(
-      to top,
-      rgba(100, 97, 97, 0.2),
-      rgba(204, 204, 204, 0.3) 2px
-    );
-  }
-  .bg3::before {
-    content: "";
-    display: inline-block;
-    height: inherit;
-    width: inherit;
-    background-image: repeating-linear-gradient(
-      to top,
-      rgba(100, 97, 97, 0.2),
-      rgba(204, 204, 204, 0.3) 2px
-    );
-  }
-  .bg4::before {
-    content: "";
-    display: inline-block;
-    height: inherit;
-    width: inherit;
-    background-image: repeating-linear-gradient(
-      to top,
-      rgba(100, 97, 97, 0.2),
-      rgba(204, 204, 204, 0.3) 2px
-    );
-  }
-  .bg5::before {
-    content: "";
-    display: inline-block;
-    height: inherit;
-    width: inherit;
-    background-image: repeating-linear-gradient(
-      to top,
-      rgba(100, 97, 97, 0.2),
-      rgba(204, 204, 204, 0.3) 2px
-    );
-  }
-  .bg6::before {
-    content: "";
-    display: inline-block;
-    height: inherit;
-    width: inherit;
-    background-image: repeating-linear-gradient(
-      to top,
-      rgba(100, 97, 97, 0.2),
-      rgba(204, 204, 204, 0.3) 2px
-    );
-  }
-  .bg7::before {
-    content: "";
-    display: inline-block;
-    height: inherit;
-    width: inherit;
-    background-image: repeating-linear-gradient(
-      to top,
-      rgba(100, 97, 97, 0.2),
-      rgba(204, 204, 204, 0.3) 2px
-    );
-  }
+  // .bg1::before {
+  //   content: "";
+  //   display: inline-block;
+  //   height: inherit;
+  //   width: inherit;
+  //   background-image: repeating-linear-gradient(
+  //     to top,
+  //     rgba(100, 97, 97, 0.2),
+  //     rgba(204, 204, 204, 0.3) 2px
+  //   );
+  // }
+  // .bg2::before {
+  //   content: "";
+  //   display: inline-block;
+  //   height: inherit;
+  //   width: inherit;
+  //   background-image: repeating-linear-gradient(
+  //     to top,
+  //     rgba(100, 97, 97, 0.2),
+  //     rgba(204, 204, 204, 0.3) 2px
+  //   );
+  // }
+  // .bg3::before {
+  //   content: "";
+  //   display: inline-block;
+  //   height: inherit;
+  //   width: inherit;
+  //   background-image: repeating-linear-gradient(
+  //     to top,
+  //     rgba(100, 97, 97, 0.2),
+  //     rgba(204, 204, 204, 0.3) 2px
+  //   );
+  // }
+  // .bg4::before {
+  //   content: "";
+  //   display: inline-block;
+  //   height: inherit;
+  //   width: inherit;
+  //   background-image: repeating-linear-gradient(
+  //     to top,
+  //     rgba(100, 97, 97, 0.2),
+  //     rgba(204, 204, 204, 0.3) 2px
+  //   );
+  // }
+  // .bg5::before {
+  //   content: "";
+  //   display: inline-block;
+  //   height: inherit;
+  //   width: inherit;
+  //   background-image: repeating-linear-gradient(
+  //     to top,
+  //     rgba(100, 97, 97, 0.2),
+  //     rgba(204, 204, 204, 0.3) 2px
+  //   );
+  // }
+  // .bg6::before {
+  //   content: "";
+  //   display: inline-block;
+  //   height: inherit;
+  //   width: inherit;
+  //   background-image: repeating-linear-gradient(
+  //     to top,
+  //     rgba(100, 97, 97, 0.2),
+  //     rgba(204, 204, 204, 0.3) 2px
+  //   );
+  // }
+  // .bg7::before {
+  //   content: "";
+  //   display: inline-block;
+  //   height: inherit;
+  //   width: inherit;
+  //   background-image: repeating-linear-gradient(
+  //     to top,
+  //     rgba(100, 97, 97, 0.2),
+  //     rgba(204, 204, 204, 0.3) 2px
+  //   );
+  // }
 
   // main info
   .focusinfo {

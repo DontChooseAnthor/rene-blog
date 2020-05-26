@@ -2,7 +2,7 @@
   <div>
     <div class="search">
       <div class="header">
-          <img class="img" src="../assets/search/2.jpg" alt />
+          <img class="img" v-lazy="Image" alt />
       </div>
       <div class="container">
         <icon-font type="icon-search1"></icon-font>
@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       search:'',
-      isFocusValue: false
+      isFocusValue: false,
+      Image:require('../assets/search/背景_房车.jpg')
     };
   },
   computed: {

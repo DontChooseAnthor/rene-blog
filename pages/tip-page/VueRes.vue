@@ -2,7 +2,7 @@
   <div class="vue-resource">
     <Nav />
     <div class="container">
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/home/tipsImage/封面_山谷.jpg')">
         <p class="title1">Vue响应式源码浅析</p>
         <p class="title2">靠着吃饭的家伙怎么能学不精？</p>
       </div>
@@ -17,7 +17,7 @@
         </div>
         <div class="section-container-short">
           首先上图，这是Vue官网上关于响应式的实现原理简化图：
-          <img src="../public/Artical/Vue/Vue原理.png" alt="">
+          <img src="../../public/Artical/Vue/Vue原理.png" alt="">
         </div>
         <div class="section-container">
           当一个普通的JavaScript对象传入Vue实例中作为Data的选项时，Vue会遍历这个对象的所有property。Vue 2.0使用Object.defineProperty将所有的property转化为getter/setter方法。Vue中的每个组件都一个对应的Watcher实例，它会在组件渲染的过程中把接触过的数据property记录为依赖，当依赖项的setter方法触发时，会通知Watcher从而实现对关联组件的重新渲染 <br>
@@ -74,19 +74,19 @@
 </template>
 
 <script>
-import Nav from "../components/nav";
-import BackTop from "../components/backtop";
-import Footer from "../components/footer";
+import Nav from "../../components/nav";
+import BackTop from "../../components/backtop";
+import Footer from "../../components/footer";
 
 import 'highlight.js/styles/monokai-sublime.css';
-import initState1 from '../public/Artical/Vue/初始化数据1.md'
-import initState2 from '../public/Artical/Vue/初始化数据2.md'
-import initState3 from '../public/Artical/Vue/初始化数据3.md'
-import initState4 from '../public/Artical/Vue/初始化数据4.md'
-import initState5 from '../public/Artical/Vue/初始化数据5.md'
-import initState6 from '../public/Artical/Vue/初始化数据6.md'
-import watcher1 from '../public/Artical/Vue/执行watcher1.md'
-import watcher2 from '../public/Artical/Vue/执行watcher2.md'
+import initState1 from '../../public/Artical/Vue/初始化数据1.md'
+import initState2 from '../../public/Artical/Vue/初始化数据2.md'
+import initState3 from '../../public/Artical/Vue/初始化数据3.md'
+import initState4 from '../../public/Artical/Vue/初始化数据4.md'
+import initState5 from '../../public/Artical/Vue/初始化数据5.md'
+import initState6 from '../../public/Artical/Vue/初始化数据6.md'
+import watcher1 from '../../public/Artical/Vue/执行watcher1.md'
+import watcher2 from '../../public/Artical/Vue/执行watcher2.md'
 export default {
   data () {
     return {
@@ -140,7 +140,6 @@ export default {
     height: 50vh;
     overflow: hidden;
     position: relative;
-    background-image: url("../assets/resource/2.jpg");
     background-size: 100% auto;
     animation: showHeader 1s ease;
     .title1 {

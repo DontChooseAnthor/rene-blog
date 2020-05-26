@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_瀑布.jpg')">
         <p class="title1">webpack原理</p>
         <p class="title2">理解webpack的简单工作原理~</p>
       </div>
@@ -481,22 +481,22 @@
 </template>
 
 <script>
-import reArticle from "../components/article";
+import reArticle from "../../components/article";
 import "highlight.js/styles/monokai-sublime.css";
-import webpack1 from "../public/Artical/webpack0/webpack1.md";
-import webpack2 from "../public/Artical/webpack0/webpack2.md";
-import webpack3 from "../public/Artical/webpack0/webpack3.md";
-import webpack4 from "../public/Artical/webpack0/webpack4.md";
-import webpack5 from "../public/Artical/webpack0/webpack5.md";
-import webpack6 from "../public/Artical/webpack0/webpack6.md";
-import webpack7 from "../public/Artical/webpack0/webpack7.md";
-import webpack8 from "../public/Artical/webpack0/webpack8.md";
-import webpack9 from "../public/Artical/webpack0/webpack9.md";
-import webpack10 from "../public/Artical/webpack0/webpack10.md";
-import webpack11 from "../public/Artical/webpack0/webpack11.md";
-import webpack12 from "../public/Artical/webpack0/webpack12.md";
-import webpack13 from "../public/Artical/webpack0/webpack13.md";
-import webpack14 from "../public/Artical/webpack0/webpack14.md";
+import webpack1 from "../../public/Artical/webpack0/webpack1.md";
+import webpack2 from "../../public/Artical/webpack0/webpack2.md";
+import webpack3 from "../../public/Artical/webpack0/webpack3.md";
+import webpack4 from "../../public/Artical/webpack0/webpack4.md";
+import webpack5 from "../../public/Artical/webpack0/webpack5.md";
+import webpack6 from "../../public/Artical/webpack0/webpack6.md";
+import webpack7 from "../../public/Artical/webpack0/webpack7.md";
+import webpack8 from "../../public/Artical/webpack0/webpack8.md";
+import webpack9 from "../../public/Artical/webpack0/webpack9.md";
+import webpack10 from "../../public/Artical/webpack0/webpack10.md";
+import webpack11 from "../../public/Artical/webpack0/webpack11.md";
+import webpack12 from "../../public/Artical/webpack0/webpack12.md";
+import webpack13 from "../../public/Artical/webpack0/webpack13.md";
+import webpack14 from "../../public/Artical/webpack0/webpack14.md";
 
 export default {
   data() {
@@ -554,7 +554,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.header {
-  background-image: url("../assets/resource/14.jpg");
-}
+
 </style>

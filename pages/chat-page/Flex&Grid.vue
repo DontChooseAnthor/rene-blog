@@ -1,7 +1,7 @@
 <template>
   <div>
     <re-article>
-      <div class="header">
+      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_暗流.jpg')">
         <p class="title1">Flex&amp;Grid</p>
         <p class="title2">CSS3搞出来的前端布局方式~</p>
       </div>
@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import reArticle from '../components/article'
+import reArticle from '../../components/article'
 export default {
   data () {
     return {
@@ -112,7 +112,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .header{
-    background-image: url("../assets/resource/4.jpg");
-  }
+  
 </style>
