@@ -69,8 +69,11 @@
             </div>
           </div>
           <Footer class="footer" />
+      <Music />
+
         </div>
       </div>
+  
   </div>
 </template>
 
@@ -78,6 +81,7 @@
 import Nav from "../components/nav";
 import BackTop from "../components/backtop";
 import Footer from "../components/footer";
+import Music from '../components/music'
 
 export default {
   data() {
@@ -90,7 +94,9 @@ export default {
   components: {
     Nav,
     BackTop,
-    Footer
+    Footer,
+    Music
+
   },
   computed: {
     waterfallData() {

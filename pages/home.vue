@@ -349,6 +349,8 @@
         </div>
         <Footer class="footer" />
       </div>
+      <Music />
+
     </div>
 </template>
 
@@ -358,6 +360,8 @@ import BackTop from "../components/backtop";
 import Footer from "../components/footer";
 import pageShareLeft from "../components/pageshare-left";
 import pageShareRight from "../components/pageshare-right";
+import Music from '../components/music'
+
 export default {
   name: "Home",
   data() {
@@ -394,7 +398,9 @@ export default {
     BackTop,
     Footer,
     pageShareLeft,
-    pageShareRight
+    pageShareRight,
+    Music
+
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);

@@ -78,6 +78,8 @@
         </showPage>
         </nuxt-link>
       </div>
+      <Music />
+
     </re-article>
   </div>
 </template>
@@ -85,13 +87,17 @@
 <script>
 import reArticle from "../components/article";
 import showPage from '../components/showpage'
+import Music from '../components/music'
+
 export default {
   data() {
     return {};
   },
   components: {
     reArticle,
-    showPage
+    showPage,
+    Music
+
   },
   methods: {}
 };

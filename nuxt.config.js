@@ -12,8 +12,10 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // { rel: 'stylesheet', type: 'text/css', href: 'http://cdn.repository.webfont.com/webfonts/nomal/138360/47808/5ec23657f629d8081cc5e7a7.css' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script:[
+
     ]
   },
   /*
@@ -33,8 +35,11 @@ module.exports = {
     {src:'~/plugins/font-awesome.js',ssr:true},
     // antd-vue
     {src:'~/plugins/antd-ui.js',ssr:true},
+    {src:'~/plugins/vue-mavon-editor.js',ssr:false},
     {src:'~/plugins/vue-lazyload.js',ssr:false},
-    {src:'~/plugins/vue-waterfall.js',ssr:false}
+    {src:'~/plugins/vue-waterfall.js',ssr:false},
+    // Aplayer
+    {src:'~/plugins/vue-aplayer.js',ssr:false}
   ],
   /*
   ** Nuxt.js dev-modules
