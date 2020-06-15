@@ -21,7 +21,7 @@
       <div class="contain" id="contain">
         
         <Nav />
-        <div class="background" v-lazy:background-image="backgroundImage">
+        <div class="background" v-lazy:background-image="backgroundImage" id="bcImg">
           <canvas id="canvas" width="2000" height="635"></canvas>
           <!-- svg波浪 -->
           <div class="svg-wave">
@@ -86,7 +86,7 @@ import Music from '../components/music'
 export default {
   data() {
     return {
-      backgroundImage:require('../assets/resource/封面_银河.jpg'),
+      backgroundImage:require('../assets/resource/封面_银河LOW.jpg'),
       col: 4,
       dialog: false,
       imageId: 0
@@ -103,26 +103,26 @@ export default {
     waterfallData() {
       let arrImg = [
         // 瀑布流放入数据
-        require("../assets/resource/star/星空1.jpg"),
-        require("../assets/resource/star/星空2.jpg"),
-        require("../assets/resource/star/星空3.jpg"),
-        require("../assets/resource/star/星空4.jpg"),
-        require("../assets/resource/star/星空5.jpg"),
-        require("../assets/resource/star/星空6.jpg"),
-        require("../assets/resource/star/星空7.jpg"),
-        require("../assets/resource/star/星空8.jpg"),
-        require("../assets/resource/star/星空9.jpg"),
-        require("../assets/resource/star/星空10.jpg"),
-        require("../assets/resource/star/星空11.jpg"),
-        require("../assets/resource/star/星空12.jpg"),
-        require("../assets/resource/star/星空13.jpg"),
-        require("../assets/resource/star/星空14.jpg"),
-        require("../assets/resource/star/星空15.jpg"),
-        require("../assets/resource/star/星空16.jpg"),
-        require("../assets/resource/star/星空17.jpg"),
-        require("../assets/resource/star/星空18.jpg"),
-        require("../assets/resource/star/星空19.jpg"),
-        require("../assets/resource/star/星空20.jpg")
+        require("../assets/resource/star/星空1LOW.jpg"),
+        require("../assets/resource/star/星空2LOW.jpg"),
+        require("../assets/resource/star/星空3LOW.jpg"),
+        require("../assets/resource/star/星空4LOW.jpg"),
+        require("../assets/resource/star/星空5LOW.jpg"),
+        require("../assets/resource/star/星空6LOW.jpg"),
+        require("../assets/resource/star/星空7LOW.jpg"),
+        require("../assets/resource/star/星空8LOW.jpg"),
+        require("../assets/resource/star/星空9LOW.jpg"),
+        require("../assets/resource/star/星空10LOW.jpg"),
+        require("../assets/resource/star/星空11LOW.jpg"),
+        require("../assets/resource/star/星空12LOW.jpg"),
+        require("../assets/resource/star/星空13LOW.jpg"),
+        require("../assets/resource/star/星空14LOW.jpg"),
+        require("../assets/resource/star/星空15LOW.jpg"),
+        require("../assets/resource/star/星空16LOW.jpg"),
+        require("../assets/resource/star/星空17LOW.jpg"),
+        require("../assets/resource/star/星空18LOW.jpg"),
+        require("../assets/resource/star/星空19LOW.jpg"),
+        require("../assets/resource/star/星空20LOW.jpg")
       ];
       return arrImg;
     }
@@ -139,7 +139,7 @@ export default {
       var parent = document.getElementById("dialog");
       parent.appendChild(dialogWindow);
       var img = document.getElementById("img");
-      img.setAttribute("src", `http://localhost:3002/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      img.setAttribute("src", `/_nuxt/assets/resource/star/星空${this.imageId}.jpg`);
       img.style.width = "28vw";
       img.style.height = "100%";
 
@@ -155,7 +155,7 @@ export default {
     turnLeft(){
       this.imageId = this.imageId - 1
       var img = document.getElementById("img");
-      img.setAttribute("src", `http://localhost:3002/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      img.setAttribute("src", `/_nuxt/assets/resource/star/星空${this.imageId}.jpg`);
       // var imageUrl = img.getAttribute('src')
       // imageUrl.split(imageUrl.length-1)
       
@@ -163,7 +163,7 @@ export default {
     turnRight(){
       this.imageId = this.imageId + 1
       var img = document.getElementById("img");
-      img.setAttribute("src", `http://localhost:3002/_nuxt/assets/resource/star/${this.imageId}.jpg`);
+      img.setAttribute("src", `/_nuxt/assets/resource/star/星空${this.imageId}.jpg`);
     },
     shareWechat(){
       console.warn('接口开发中')     
@@ -173,9 +173,13 @@ export default {
     },
     shareQQ(){
       console.warn('接口开发中')     
+    },
+    onLoad(){
+      this.backgroundImage = require('../assets/resource/封面_银河.jpg')
     }
   },
   mounted() {
+    window.addEventListener("load",this.onLoad);
     // 坐标
     class Crood {
       constructor(x = 0, y = 0) {
@@ -343,7 +347,11 @@ export default {
     let ctx = cvs.getContext("2d");
     let meteorShower = new MeteorShower(cvs, ctx);
     meteorShower.start();
-  }
+  },
+  destroyed() {
+    window.addEventListener("load",this.onLoad);
+  },
+
 };
 </script>
 

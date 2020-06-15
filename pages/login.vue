@@ -22,17 +22,22 @@
         <a-form-item>
           <a-input
             v-decorator="[
-          'username',
-          {
-            rules: [
-              {
-                required: true,
-                message: '请输入用户名',
-              },
-            ],
-          },
-        ]"
-            placeholder="Username"
+                'email',
+                {
+                  rules: [
+                    {
+                      type: 'email',
+                      message: '请输入合法的邮箱地址',
+                      trigger: 'blur'
+                    },
+                    {
+                      required: true,
+                      message: '请输入邮箱',
+                    },
+                  ],
+                },
+            ]"
+            placeholder="Email"
           >
             <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
           </a-input>
@@ -71,6 +76,8 @@
 import CryptoJS from 'crypto-js'
 import Footer from "../components/footer";
 import { Icon } from "ant-design-vue";
+import api from '../api/constant'
+
 const IconFont = Icon.createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_1745031_wqtjly17xot.js"
 });
@@ -92,12 +99,16 @@ export default {
       this.form.validateFields(async(err, values) => {
         if (!err) {
           // console.log("Received values of form: ", values);
-         const res = await _this.$axios.post('/users/signin',{
-           username:window.encodeURIComponent(values.username),
+         const res = await _this.$axios.post(api.RENE_LOGIN,{
+           email:values.email,
            password:CryptoJS.MD5(values.password).toString()
          })
         console.log(res.data)
-          
+        if(res.data.success){
+          this.$router.push('/home')
+        }else{
+          alert('登录失败')
+        }
           
         }
       });

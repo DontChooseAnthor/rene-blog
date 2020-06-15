@@ -1,7 +1,14 @@
 <template>
   <div>
     <re-article>
-      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_橱窗.jpg')">
+      <div class="header">
+        <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+        
         <p class="title1">Axios</p>
         <p class="title2">不惜抛弃vue-resource，获得了Vue作者大大力推荐~</p>
       </div>
@@ -51,7 +58,12 @@ import axios5 from '../../public/Artical/axios/axios5.md'
 export default {
   data () {
     return {
-
+      imgs:[
+        {
+          src:require('../../assets/resource/封面_橱窗.jpg'),
+          preview:require('../../assets/resource/封面_橱窗LOW.jpg')
+        }
+      ]
     }
   },
   computed: {

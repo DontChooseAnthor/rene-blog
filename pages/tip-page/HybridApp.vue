@@ -2,7 +2,14 @@
   <div class="hybrid-app">
       <Nav />
       <div class="container">
-        <div class="header" v-lazy:background-image="require('../../assets/home/tipsImage/封面_幽道.jpg')">
+        <div class="header">
+        <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+        
           <p class="title1">初探Hybrid App</p>
           <p class="title2">紧跟技术前沿，至少知道是个啥</p>
         </div>
@@ -140,7 +147,12 @@ import hybrid1 from '../../public/Artical/Hybrid/hybrid.md'
 export default {
   data () {
     return {
-
+      imgs:[
+        {
+          src:require('../../assets/home/tipsImage/封面_幽道.jpg'),
+          preview:require('../../assets/home/tipsImage/封面_幽道.jpg')
+        }
+      ]
     }
   },
   computed: {
@@ -163,16 +175,23 @@ export default {
   overflow: hidden;
   .header {
     width: 100vw;
-    height: 50vh;
+    height: 55vh;
     overflow: hidden;
     position: relative;
-    background-size: 100% auto;
+    // background-size: 100% auto;
     animation: showHeader 1s ease;
+    .progressive{
+      position: absolute;
+      width: inherit;
+      img{
+        width: 100%;
+      }
+    }
     .title1 {
       width: inherit;
       color: #fff;
       text-align: center;
-      margin-top: 23vh;
+      margin-top: 25vh;
       position: absolute;
       font-size: 35px;
       font-weight: 600;

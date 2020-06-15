@@ -12,8 +12,10 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {rel:'stylesheet',type:'text/css',href:'//unpkg.com/progressive-image/dist/index.css'}
     ],
+
     script:[
 
     ]
@@ -26,6 +28,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+
   ],
   /*
   ** Plugins to load before mounting the App
@@ -39,7 +42,9 @@ module.exports = {
     {src:'~/plugins/vue-lazyload.js',ssr:false},
     {src:'~/plugins/vue-waterfall.js',ssr:false},
     // Aplayer
-    {src:'~/plugins/vue-aplayer.js',ssr:false}
+    {src:'~/plugins/vue-aplayer.js',ssr:false},
+    // progressive-image
+    {src:'~/plugins/vue-progressive-image',ssr:false}
   ],
   /*
   ** Nuxt.js dev-modules

@@ -1,7 +1,14 @@
 <template>
   <div>
     <re-article>
-      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_暗流.jpg')">
+      <div class="header">
+      <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+
         <p class="title1">Flex&amp;Grid</p>
         <p class="title2">CSS3搞出来的前端布局方式~</p>
       </div>
@@ -101,7 +108,12 @@ import reArticle from '../../components/article'
 export default {
   data () {
     return {
-
+      imgs:[
+        {
+          src:require('../../assets/resource/封面_暗流.jpg'),
+          preview:require('../../assets/resource/封面_暗流LOW.jpg')
+        }
+      ]
     }
   },
   components:	{

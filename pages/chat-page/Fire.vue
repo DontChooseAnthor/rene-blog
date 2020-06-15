@@ -1,7 +1,14 @@
 <template>
   <div>
     <re-article>
-      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_远眺.jpg')">
+      <div class="header">
+      <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+        
         <p class="title1">火法循环</p>
         <p class="title2">结合NGA老哥经验后的自闭思考~</p>
       </div>
@@ -53,7 +60,12 @@ import reArticle from '../../components/article'
 export default {
   data () {
     return {
-
+      imgs:[
+        {
+          src:require('../../assets/resource/封面_远眺.jpg'),
+          preview:require('../../assets/resource/封面_远眺LOW.jpg')
+        }
+      ]
     }
   },
   components:	{

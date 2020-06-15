@@ -2,7 +2,14 @@
   <div class="promise-resource">
     <Nav />
     <div class="container">
-      <div class="header" v-lazy:background-image="require('../../assets/home/tipsImage/封面_城池.jpg')">
+      <div class="header">
+      <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+
         <p class="title1">Promise的一些理解</p>
         <p class="title2">无论何时，ES6的基础永远是最重要的~</p>
       </div>
@@ -152,7 +159,12 @@ import rejectObj from '../../public/Artical/Promise/reject.md'
 export default {
   data() {
     return {
-      
+      imgs:[
+        {
+          src:require('../../assets/home/tipsImage/封面_城池.jpg'),
+          preview:require('../../assets/home/tipsImage/封面_城池.jpg')
+        }
+      ]
     };
   },
   computed: {
@@ -204,16 +216,23 @@ export default {
   overflow: hidden;
   .header {
     width: 100vw;
-    height: 50vh;
+    height: 55vh;
     overflow: hidden;
     position: relative;
-    background-size: 100% auto;
+    // background-size: 100% auto;
     animation: showHeader 1s ease;
+    .progressive{
+      position: absolute;
+      width: inherit;
+      img{
+        width: 100%;
+      }
+    }
     .title1 {
       width: inherit;
       color: #fff;
       text-align: center;
-      margin-top: 23vh;
+      margin-top: 25vh;
       position: absolute;
       font-size: 35px;
       font-weight: 600;

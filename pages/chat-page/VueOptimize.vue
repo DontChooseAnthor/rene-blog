@@ -1,7 +1,14 @@
 <template>
   <div>
     <re-article>
-      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_鸟居.jpg')">
+      <div class="header">
+      <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+        
         <p class="title1">Vue的九种优化方法</p>
         <p class="title2">来自于Guillaume Chau大神在19年开发大会上的总结~</p>
       </div>
@@ -72,7 +79,12 @@ import vue9 from '../../public/Artical/vue-better/vue9.md'
 export default {
   data () {
     return {
-
+      imgs:[
+        {
+          src:require('../../assets/resource/封面_鸟居.jpg'),
+          preview:require('../../assets/resource/封面_鸟居LOW.jpg')
+        }
+      ]
     }
   },
   computed: {

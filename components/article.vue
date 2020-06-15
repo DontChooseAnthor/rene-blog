@@ -33,17 +33,24 @@ export default {
   overflow: hidden;
   .header {
     width: 100vw;
-    height: 50vh;
+    height: 55vh;
     overflow: hidden;
     position: relative;
     // background-image: url("../assets/resource/3.jpg");
-    background-size: 100% auto;
+    // background-size: 100% auto;
     animation: showHeader 1s ease;
+    .progressive{
+      position: absolute;
+      width: inherit;
+      img{
+        width: 100%;
+      }
+    }
     .title1 {
       width: inherit;
       color: #fff;
       text-align: center;
-      margin-top: 23vh;
+      margin-top: 25vh;
       position: absolute;
       font-size: 35px;
       font-weight: 600;
@@ -84,7 +91,7 @@ export default {
   .article {
     width: 55vw;
     margin: 0 auto;
-    margin-top: 15vh;
+    margin-top: 10vh;
     font-weight: 500;
     text-align: justify;
     line-height: 30px;

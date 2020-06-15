@@ -67,8 +67,7 @@
         <!-- Nav component -->
         <Nav v-if="navShow" />
 
-        <div class="bg" v-lazy:background-image="backgroundImage" 
-        :key="backgroundImage" id="headerBg">
+        <div class="bg" :style="{backgroundImage: 'url( '+ backgroundImage +')'}"  id="headerBg">
           <!-- title -->
           <figure id="centerbg" class="centerbg">
             <div class="focusinfo">
@@ -371,21 +370,30 @@ export default {
       num: 1,
       navShow: false,
       backgroundImage:'',
-      tip1:require('../assets/home/tipsImage/封面_城池.jpg'),
-      tip2:require('../assets/home/tipsImage/封面_山谷.jpg'),
-      tip3:require('../assets/home/tipsImage/封面_幽道.jpg'),
+      tip1:require('../assets/home/tipsImage/封面_城池LOW.jpg'),
+      tip2:require('../assets/home/tipsImage/封面_山谷LOW.jpg'),
+      tip3:require('../assets/home/tipsImage/封面_幽道LOW.jpg'),
       pageShare:[
-        require("../assets/resource/封面_暗流.jpg"),
-        require("../assets/resource/封面_古迹.jpg"),
-        require("../assets/resource/封面_森林.jpg"),
-        require("../assets/resource/封面_橱窗.jpg"),
-        require("../assets/resource/封面_远眺.jpg"),
-        require("../assets/resource/封面_车站.jpg"),
-        require("../assets/resource/封面_门关.jpg"),
-        require("../assets/resource/封面_夕阳.jpg"),
-        require("../assets/resource/封面_鸟居.jpg"),
-        require("../assets/resource/封面_瀑布.jpg"),
-      ]
+        require("../assets/resource/封面_暗流LOW.jpg"),
+        require("../assets/resource/封面_古迹LOW.jpg"),
+        require("../assets/resource/封面_森林LOW.jpg"),
+        require("../assets/resource/封面_橱窗LOW.jpg"),
+        require("../assets/resource/封面_远眺LOW.jpg"),
+        require("../assets/resource/封面_车站LOW.jpg"),
+        require("../assets/resource/封面_门关LOW.jpg"),
+        require("../assets/resource/封面_夕阳LOW.jpg"),
+        require("../assets/resource/封面_鸟居LOW.jpg"),
+        require("../assets/resource/封面_瀑布LOW.jpg"),
+      ],
+      background:[
+      require("../assets/home/backgroundImage/壁纸_虫柱.jpg"),
+      require("../assets/home/backgroundImage/壁纸_餐厅少女.jpg"),
+      require("../assets/home/backgroundImage/壁纸_鬼刀.jpg"),
+      require("../assets/home/backgroundImage/壁纸_桔梗.jpg"),
+      require("../assets/home/backgroundImage/壁纸_夕阳少女.jpg"),
+      require("../assets/home/backgroundImage/壁纸_JK撑伞.jpg"),
+      require("../assets/home/backgroundImage/壁纸_学校少女.jpg"),
+    ]
     };
   },
   methods: {
@@ -407,6 +415,13 @@ export default {
       } else {
         this.navShow = true;
       }
+    },
+    // 通过替换src的方式改变图片url
+    onLoad(){
+      let bgImg = document.getElementById('headerBg')
+      // bgImg.style.backgroundImage = this.background[this.num]
+      let useImg = 'url("'+this.background[this.num]+'")'
+      bgImg.style.backgroundImage = useImg
     }
     //返回顶部鼠标事件
   },
@@ -422,26 +437,31 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("load",this.onLoad);
     // 进入时改变bcimg
     // let num = Math.floor(Math.random() * 7 + 1);
     // // this.$refs.backGroundImage.style.backGround = url(`../assets/theme/${num}.jpg`)
     // this.bg = `bg${num}`;
     // 获取图片组成数组
-    let background = [
-      require("../assets/home/backgroundImage/壁纸_虫柱.jpg"),
-      require("../assets/home/backgroundImage/壁纸_餐厅少女.jpg"),
-      require("../assets/home/backgroundImage/壁纸_鬼刀.jpg"),
-      require("../assets/home/backgroundImage/壁纸_桔梗.jpg"),
-      require("../assets/home/backgroundImage/壁纸_夕阳少女.jpg"),
-      require("../assets/home/backgroundImage/壁纸_JK撑伞.jpg"),
-      require("../assets/home/backgroundImage/壁纸_学校少女.jpg"),
+    let backgroundLOW = [
+      require("../assets/home/backgroundImage/壁纸_虫柱LOW.jpg"),
+      require("../assets/home/backgroundImage/壁纸_餐厅少女LOW.jpg"),
+      require("../assets/home/backgroundImage/壁纸_鬼刀LOW.jpg"),
+      require("../assets/home/backgroundImage/壁纸_桔梗LOW.jpg"),
+      require("../assets/home/backgroundImage/壁纸_夕阳少女LOW.jpg"),
+      require("../assets/home/backgroundImage/壁纸_JK撑伞LOW.jpg"),
+      require("../assets/home/backgroundImage/壁纸_学校少女LOW.jpg"),
     ]
-    this.num = Math.floor(Math.random()*7+1)
-    this.backgroundImage = background[this.num]
+    
+    this.backgroundImage = backgroundLOW[0]
+    this.num = Math.floor(Math.random()*7)
+    this.backgroundImage = backgroundLOW[this.num]
+
     
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
+    window.addEventListener("load",this.onLoad);
   }
 };
 </script>

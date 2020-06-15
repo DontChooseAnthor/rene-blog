@@ -1,7 +1,14 @@
 <template>
   <div>
     <re-article>
-      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_车站.jpg')">
+      <div class="header">
+      <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+
         <p class="title1">HTTP基本原理</p>
         <p class="title2">在浏览器中敲入URL到获取网页内容之间发生了什么~</p>
       </div>
@@ -114,7 +121,12 @@ import reArticle from '../../components/article'
 export default {
   data () {
     return {
-
+      imgs:[
+        {
+          src:require('../../assets/resource/封面_车站.jpg'),
+          preview:require('../../assets/resource/封面_车站LOW.jpg')
+        }
+      ]
     }
   },
   components:	{

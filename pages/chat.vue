@@ -1,7 +1,14 @@
 <template>
   <div>
     <re-article>
-      <div class="header" v-lazy:background-image="require('../assets/resource/封面_万圣节.jpg')">
+      <div class="header">
+      <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+
         <p class="title1">杂谈</p>
         <p class="title2">快进来，在火炉旁找个位置随便坐~</p>
       </div>
@@ -93,16 +100,22 @@ export default {
   data() {
     return {
       pageShare:[
-        require("../assets/resource/封面_暗流.jpg"),
-        require("../assets/resource/封面_古迹.jpg"),
-        require("../assets/resource/封面_森林.jpg"),
-        require("../assets/resource/封面_橱窗.jpg"),
-        require("../assets/resource/封面_远眺.jpg"),
-        require("../assets/resource/封面_车站.jpg"),
-        require("../assets/resource/封面_门关.jpg"),
-        require("../assets/resource/封面_夕阳.jpg"),
-        require("../assets/resource/封面_鸟居.jpg"),
-        require("../assets/resource/封面_瀑布.jpg"),
+        require("../assets/resource/封面_暗流LOW.jpg"),
+        require("../assets/resource/封面_古迹LOW.jpg"),
+        require("../assets/resource/封面_森林LOW.jpg"),
+        require("../assets/resource/封面_橱窗LOW.jpg"),
+        require("../assets/resource/封面_远眺LOW.jpg"),
+        require("../assets/resource/封面_车站LOW.jpg"),
+        require("../assets/resource/封面_门关LOW.jpg"),
+        require("../assets/resource/封面_夕阳LOW.jpg"),
+        require("../assets/resource/封面_鸟居LOW.jpg"),
+        require("../assets/resource/封面_瀑布LOW.jpg"),
+      ],
+      imgs:[
+        {
+          src:require('../assets/resource/封面_万圣节.jpg'),
+          preview:require('../assets/resource/封面_万圣节LOW.jpg')
+        }
       ]
     };
   },

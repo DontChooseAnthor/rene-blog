@@ -132,6 +132,7 @@ const IconFont = Icon.createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_1745031_wqtjly17xot.js"
 });
 import CryptoJS from 'crypto-js'
+import api from '../api/constant'
 export default {
   beforeCreate() {
     this.form = this.$form.createForm(this, { name: "register" });
@@ -159,19 +160,18 @@ export default {
         if (!err) {
           // console.log("Received values of form: ", values);
           // console.log(values);
-          const res = await _this.$axios.post('/users/signup',{
+          const res = await _this.$axios.post(api.RENE_REGISTER,{
            username: window.encodeURIComponent(values.username),
            password: CryptoJS.MD5(values.password).toString(),
            email: values.email,
            nickname: values.nickname
          }).then(({status,data})=>{
            if(status===200){
-             if(data&&data.code===0){
                this.visible1 = true
-             }else if(data&&data.code===-1){
+           }else{
                this.visible2 = true
                this.ModalText2 = data.msg
-             }
+             
            }
          })
           

@@ -1,7 +1,14 @@
 <template>
   <div>
     <re-article>
-      <div class="header" v-lazy:background-image="require('../../assets/resource/封面_瀑布.jpg')">
+      <div class="header">
+      <!-- 渐进加载 -->
+        <template v-for="(item,index) in imgs">
+          <div class="progressive" :key="index">
+            <img class="preview" :src="item.preview" v-progressive="item.src" alt="">
+          </div>
+        </template>
+        
         <p class="title1">webpack原理</p>
         <p class="title2">理解webpack的简单工作原理~</p>
       </div>
@@ -500,7 +507,14 @@ import webpack14 from "../../public/Artical/webpack0/webpack14.md";
 
 export default {
   data() {
-    return {};
+    return {
+      imgs:[
+        {
+          src:require('../../assets/resource/封面_瀑布.jpg'),
+          preview:require('../../assets/resource/封面_瀑布LOW.jpg')
+        }
+      ]
+    };
   },
   computed: {
     webpack1() {

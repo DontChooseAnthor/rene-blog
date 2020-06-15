@@ -1,8 +1,15 @@
 <template>
   <div class="main">
     <Nav />
-    <div class="background" v-lazy:background-image="require('../assets/about/视差_重山.jpg')" id="background">
-      <img class="road" v-lazy="road" alt="">
+    <div class="background" >
+    <!-- 渐进加载 -->
+          <div class="mountain">
+            <img :src="mountain.preview" id="background" v-progressive="mountain.src" alt="">
+          </div>
+          <div class="road">
+            <img :src="road.preview" v-progressive="road.src" alt="">
+          </div>
+
       <p class="title">About</p> 
    </div>
     <div class="during"></div>
@@ -40,7 +47,25 @@ import Music from '../components/music'
 export default {
   data () {
     return {
-      road:require('../assets/about/视差_公路.png')
+      // imgs:[
+      //   {
+      //     src:require('../assets/about/视差_重山.jpg'),
+      //     preview:require('../assets/about/视差_重山LOW.jpg'),
+      //   },
+      //   {
+      //     src:require('../assets/about/视差_公路.png'),
+      //     preview:require('../assets/about/视差_公路LOW.png'),
+      //   }
+      // ]
+      mountain:{
+        src:require('../assets/about/视差_重山.jpg'),
+          preview:require('../assets/about/视差_重山LOW.jpg'),
+      },
+      road:{
+        src:require('../assets/about/视差_公路.png'),
+          preview:require('../assets/about/视差_公路LOW.png'),
+      }
+
     }
   },
   components:	{
@@ -58,9 +83,10 @@ export default {
         document.body.scrollTop;
         let background = document.getElementById('background')
 
-        background.style.backgroundSize = 100 + scrollTop + "%"
-
-
+        // background.style.backgroundSize = 100 + scrollTop + "%"
+        background.style.width = 100 + scrollTop/3 +"%"
+        background.style.left = - scrollTop*3 + 'px'
+        background.style.top = - scrollTop*1.2 + 'px'
     },
   },
   mounted() {
@@ -82,15 +108,30 @@ export default {
   left: 0;
   margin: auto;
   overflow: hidden;
-  background-position:center;
-  background-repeat: no-repeat;
+  // background-position:center;
+  // background-repeat: no-repeat;
+  .mountain{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    img{
+      position: absolute;
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
   .road{
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 100;
+    z-index: 100; 
+    img{
+      position: absolute;
+      width: 100%;
+    }
   }
   .title{
     position: fixed;
